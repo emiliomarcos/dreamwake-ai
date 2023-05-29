@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import Loading from "./Loading";
 
 export default function DreamForm() {
   const [prompt, setPrompt] = useState("");
   const [interpretation, setInterpretation] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     console.log("interpretation: " + interpretation)
@@ -12,6 +14,7 @@ export default function DreamForm() {
     e.preventDefault();
 
     try {
+      setLoading(true);
       const response = await fetch("http://localhost:5000/gpt", {
         method: "POST",
         headers: {
@@ -30,6 +33,8 @@ export default function DreamForm() {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -45,7 +50,8 @@ export default function DreamForm() {
         </button>
       </form>
       <div className="interpretation">
-        {interpretation}
+        {loading && <Loading />}
+        {!loading && interpretation}
       </div>
     </>
   )
