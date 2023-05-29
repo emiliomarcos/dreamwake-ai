@@ -4,11 +4,15 @@ import gptRoutes from "./routes/gptRoutes.js";
 
 const app = express();
 
+// app.use((req, res, next) => {
+//   console.log(`${req.method} to ${req.url}`);
+//   next();
+// })
 app.use(cors());
 app.use(express.json());
 
 app.use(cors({
-  origin: "http://127.0.0.1:5173/"
+  origin: "http://127.0.0.1:5173"
 }))
 
 app.use("/gpt", gptRoutes);

@@ -4,8 +4,6 @@ export default function DreamForm() {
   const [prompt, setPrompt] = useState("");
   const [interpretation, setInterpretation] = useState(null);
 
-  console.log("prompt: " + prompt);
-
   useEffect(() => {
     console.log("interpretation: " + interpretation)
   }, [interpretation])
@@ -14,7 +12,7 @@ export default function DreamForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://127.0.0.1:5000/gpt", {
+      const response = await fetch("http://localhost:5000/gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -22,14 +20,14 @@ export default function DreamForm() {
         body: JSON.stringify({ prompt })
       });
 
+      console.log(response);
+
       if (response.ok) {
-        const data = await response.json();
-        setInterpretation(data.choices[0].text);
+        const responseJSON = await response.json();
+        setInterpretation(responseJSON.choices[0].text);
       } else {
         console.error(response);
       }
-
-      console.log("interpretation: " + interpretation);
     } catch (error) {
       console.error(error);
     }
@@ -46,7 +44,9 @@ export default function DreamForm() {
           Submit
         </button>
       </form>
-      {interpretation}
+      <div className="interpretation">
+        {interpretation}
+      </div>
     </>
   )
 }
