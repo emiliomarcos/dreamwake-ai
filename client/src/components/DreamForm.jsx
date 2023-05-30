@@ -1,14 +1,14 @@
 import { useState } from "react";
-import Loading from "./Loading";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+
 
 export default function DreamForm() {
   const [chatPrompt, setChatPrompt] = useState("");
   const [imagePrompt, setImagePrompt] = useState("");
   const [interpretation, setInterpretation] = useState(null);
-  const [loadingStatus, setLoadingStatus] = useState(false);
   const [imageUrl, setImageUrl] = useState(null);
-
-  console.log(imageUrl);
+  const [loadingStatus, setLoadingStatus] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -41,10 +41,12 @@ export default function DreamForm() {
       }
 
       if (responseDalle.ok) {
-        console.log(responseDalle);
         const responseDalleJSON = await responseDalle.json();
         setImageUrl(responseDalleJSON.data[0].url);
+      } else {
+        console.error(responseDalle);
       }
+
     } catch (error) {
       console.error(error);
     } finally {
@@ -65,13 +67,15 @@ export default function DreamForm() {
           <input type="text" onChange={handlePrompts} />
         </label>
         <button>
-          Submit
+          Dream On
         </button>
       </form>
+      {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
       <div className="interpretation">
-        {loadingStatus && <Loading />}
         {!loadingStatus && interpretation}
-        {!loadingStatus && <img src={imageUrl}/>}
+      </div>
+      <div>
+        {!loadingStatus && <img src={imageUrl} />}
       </div>
     </>
   )
