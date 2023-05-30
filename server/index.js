@@ -1,13 +1,10 @@
 import express from "express";
 import cors from "cors";
-import gptRoutes from "./routes/gptRoutes.js";
+import { gptRoutes } from "./routes/index.js";
+import { dalleRoutes } from "./routes/index.js";
 
 const app = express();
 
-// app.use((req, res, next) => {
-//   console.log(`${req.method} to ${req.url}`);
-//   next();
-// })
 app.use(cors());
 app.use(express.json());
 
@@ -16,6 +13,7 @@ app.use(cors({
 }))
 
 app.use("/gpt", gptRoutes);
+app.use("/dalle", dalleRoutes);
 
 app.get("/", async (req, res) => {
   res.send("Server has woken up");

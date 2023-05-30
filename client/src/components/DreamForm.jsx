@@ -1,41 +1,60 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Loading from "./Loading";
 
 export default function DreamForm() {
-  const [prompt, setPrompt] = useState("");
+  const [chatPrompt, setChatPrompt] = useState("");
+  const [imagePrompt, setImagePrompt] = useState("");
   const [interpretation, setInterpretation] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loadingStatus, setLoadingStatus] = useState(false);
+  const [imageUrl, setImageUrl] = useState(null);
 
-  useEffect(() => {
-    console.log("interpretation: " + interpretation)
-  }, [interpretation])
+  console.log(imageUrl);
 
   async function handleSubmit(e) {
     e.preventDefault();
 
     try {
-      setLoading(true);
-      const response = await fetch("http://localhost:5000/gpt", {
+      setLoadingStatus(true);
+      const promiseGpt = fetch("http://localhost:5000/gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ prompt })
+        body: JSON.stringify({ chatPrompt })
       });
 
-      console.log(response);
+      const promiseDalle = fetch("http://localhost:5000/dalle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ imagePrompt })
+      })
 
-      if (response.ok) {
-        const responseJSON = await response.json();
-        setInterpretation(responseJSON.choices[0].text);
+      const [responseGpt, responseDalle] = await Promise.all([promiseGpt, promiseDalle]);
+
+      if (responseGpt.ok) {
+        const responseGptJSON = await responseGpt.json();
+        setInterpretation(responseGptJSON.choices[0].text);
       } else {
-        console.error(response);
+        console.error(responseGpt);
+      }
+
+      if (responseDalle.ok) {
+        console.log(responseDalle);
+        const responseDalleJSON = await responseDalle.json();
+        setImageUrl(responseDalleJSON.data[0].url);
       }
     } catch (error) {
       console.error(error);
     } finally {
-      setLoading(false);
+      setLoadingStatus(false);
     }
+  }
+
+  function handlePrompts(e) {
+    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, give me this in bullet points and a short full dream interpretation in the end: ${e.target.value}`);
+    setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
   }
 
   return (
@@ -43,15 +62,16 @@ export default function DreamForm() {
       <form onSubmit={handleSubmit}>
         <label>
           Dream keywords:
-          <input type="text" onChange={e => setPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, give me this in bullet points and a short full dream interpretation in the end: ${e.target.value}`)} />
+          <input type="text" onChange={handlePrompts} />
         </label>
         <button>
           Submit
         </button>
       </form>
       <div className="interpretation">
-        {loading && <Loading />}
-        {!loading && interpretation}
+        {loadingStatus && <Loading />}
+        {!loadingStatus && interpretation}
+        {!loadingStatus && <img src={imageUrl}/>}
       </div>
     </>
   )
