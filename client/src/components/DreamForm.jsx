@@ -10,6 +10,16 @@ export default function DreamForm() {
   const [imageUrl, setImageUrl] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(false);
 
+  let keywordsInterpretation;
+  let fullInterpretation;
+
+  if (interpretation) {
+    keywordsInterpretation = interpretation.split("• ");
+    keywordsInterpretation.shift();
+
+    fullInterpretation = keywordsInterpretation.pop();
+  }
+
   async function handleSubmit(e) {
     e.preventDefault();
 
@@ -55,7 +65,6 @@ export default function DreamForm() {
   }
 
   function handlePrompts(e) {
-    // setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, give me this in bullet points and a short full dream interpretation in the end: ${e.target.value}`);
     setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${e.target.value}`);
     setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
   }
@@ -73,7 +82,8 @@ export default function DreamForm() {
       </form>
       {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
       <div className="interpretation">
-        {!loadingStatus && interpretation}
+        {!loadingStatus && <ul>{keywordsInterpretation.map(text => <li key={text}>{text}</li>)}</ul>}
+        <h4>{!loadingStatus && fullInterpretation}</h4>
       </div>
       <div>
         {!loadingStatus && <img src={imageUrl} />}
