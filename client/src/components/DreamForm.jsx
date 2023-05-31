@@ -1,24 +1,15 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import Interpretation from "./Interpretation";
 
 
 export default function DreamForm() {
   const [chatPrompt, setChatPrompt] = useState("");
   const [imagePrompt, setImagePrompt] = useState("");
-  const [interpretation, setInterpretation] = useState(null);
+  const [chatOutput, setChatOutput] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(false);
-
-  let keywordsInterpretation;
-  let fullInterpretation;
-
-  if (interpretation) {
-    keywordsInterpretation = interpretation.split("• ");
-    keywordsInterpretation.shift();
-
-    fullInterpretation = keywordsInterpretation.pop();
-  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -45,7 +36,7 @@ export default function DreamForm() {
 
       if (responseGpt.ok) {
         const responseGptJSON = await responseGpt.json();
-        setInterpretation(responseGptJSON.choices[0].text);
+        setChatOutput(responseGptJSON.choices[0].text);
       } else {
         console.error(responseGpt);
       }
@@ -81,13 +72,7 @@ export default function DreamForm() {
         </button>
       </form>
       {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
-      <div className="interpretation">
-        {!loadingStatus && <ul>{keywordsInterpretation.map(text => <li key={text}>{text}</li>)}</ul>}
-        <h4>{!loadingStatus && fullInterpretation}</h4>
-      </div>
-      <div>
-        {!loadingStatus && <img src={imageUrl} />}
-      </div>
+      {!loadingStatus && chatOutput && <Interpretation chatOutput={chatOutput} imageUrl={imageUrl} loadingStatus={loadingStatus} />}
     </>
   )
 }
