@@ -55,7 +55,8 @@ export default function DreamForm() {
   }
 
   function handlePrompts(e) {
-    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, give me this in bullet points and a short full dream interpretation in the end: ${e.target.value}`);
+    // setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, give me this in bullet points and a short full dream interpretation in the end: ${e.target.value}`);
+    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${e.target.value}`);
     setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
   }
 
