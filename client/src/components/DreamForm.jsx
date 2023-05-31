@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import Interpretation from "./Interpretation";
 
 
 export default function DreamForm() {
   const [chatPrompt, setChatPrompt] = useState("");
   const [imagePrompt, setImagePrompt] = useState("");
-  const [interpretation, setInterpretation] = useState(null);
+  const [chatOutput, setChatOutput] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(false);
 
@@ -35,7 +36,7 @@ export default function DreamForm() {
 
       if (responseGpt.ok) {
         const responseGptJSON = await responseGpt.json();
-        setInterpretation(responseGptJSON.choices[0].text);
+        setChatOutput(responseGptJSON.choices[0].text);
       } else {
         console.error(responseGpt);
       }
@@ -55,7 +56,7 @@ export default function DreamForm() {
   }
 
   function handlePrompts(e) {
-    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, give me this in bullet points and a short full dream interpretation in the end: ${e.target.value}`);
+    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${e.target.value}`);
     setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
   }
 
@@ -71,12 +72,7 @@ export default function DreamForm() {
         </button>
       </form>
       {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
-      <div className="interpretation">
-        {!loadingStatus && interpretation}
-      </div>
-      <div>
-        {!loadingStatus && <img src={imageUrl} />}
-      </div>
+      {!loadingStatus && chatOutput && <Interpretation chatOutput={chatOutput} imageUrl={imageUrl} loadingStatus={loadingStatus} />}
     </>
   )
 }
