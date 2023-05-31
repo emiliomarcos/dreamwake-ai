@@ -15,7 +15,7 @@ export default function DreamForm() {
 
     try {
       setLoadingStatus(true);
-      const promiseGpt = fetch("http://localhost:5000/gpt", {
+      const promiseGpt = fetch("https://dreamwake-ai.onrender.com/gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -23,7 +23,7 @@ export default function DreamForm() {
         body: JSON.stringify({ chatPrompt })
       });
 
-      const promiseDalle = fetch("http://localhost:5000/dalle", {
+      const promiseDalle = fetch("https://dreamwake-ai.onrender.com/dalle", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
