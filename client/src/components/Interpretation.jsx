@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export default function Interpretation({ chatOutput, imageUrl }) {
+export default function Interpretation({ keywords, chatOutput, imageUrl }) {
   const bulletsOutput = chatOutput.split("• ");
   bulletsOutput.shift();
 
@@ -14,12 +14,14 @@ export default function Interpretation({ chatOutput, imageUrl }) {
       </div>
       <div className="image">
         <img src={imageUrl} />
+        <p>{keywords}</p>
       </div>
     </>
   )
 }
 
 Interpretation.propTypes = {
+  keywords: PropTypes.string.isRequired,
   chatOutput: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired
 }
