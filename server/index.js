@@ -2,6 +2,11 @@ import express from "express";
 import cors from "cors";
 import { gptRoutes } from "./routes/index.js";
 import { dalleRoutes } from "./routes/index.js";
+import { dreamRoutes } from "./routes/index.js";
+import { connect } from "mongoose";
+import * as dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -14,11 +19,26 @@ app.use(cors({
 
 app.use("/gpt", gptRoutes);
 app.use("/dalle", dalleRoutes);
+app.use("/dreams", dreamRoutes);
 
 app.get("/", async (req, res) => {
   res.send("Server has woken up");
 })
 
-app.listen(5000, () => {
-  console.log("Server is running on port http://localhost:5000");
-})
+async function connectMongoDB() {
+  try {
+    await connect(process.env.MONGODB_STRING);
+    console.log("MongoDB connection success");
+  } catch (error) {
+    console.error("MongoDB connection fail", error);
+    process.exit(1);
+  }
+}
+
+function startServer() {
+  app.listen(5000, () => {
+    console.log("Server is running on port http://localhost:5000");
+  })
+}
+
+connectMongoDB().then(startServer);

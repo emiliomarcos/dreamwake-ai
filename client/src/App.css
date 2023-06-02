@@ -26,3 +26,21 @@ img {
   margin-top: 200px;
   color: #FFD700;
 }
+
+.dream {
+  margin-top: 100px;
+}
+
+.explore {
+  margin-top: 250px;
+}
+
+.share-button {
+  margin-top: 75px;
+  background-color: #adff2f;
+  size: 50px;
+}
+
+.share-button:hover {
+  background-color: #79B220;
+}

@@ -2,9 +2,11 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import Interpretation from "./Interpretation";
+import Explore from "./Explore";
 
 
 export default function DreamForm() {
+  const [keywords, setKeywords] = useState("");
   const [chatPrompt, setChatPrompt] = useState("");
   const [imagePrompt, setImagePrompt] = useState("");
   const [chatOutput, setChatOutput] = useState(null);
@@ -17,6 +19,7 @@ export default function DreamForm() {
     try {
       setLoadingStatus(true);
       const promiseGpt = fetch("https://dreamwake-ai.onrender.com/gpt", {
+      // const promiseGpt = fetch("http://localhost:5000/gpt", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -25,6 +28,7 @@ export default function DreamForm() {
       });
 
       const promiseDalle = fetch("https://dreamwake-ai.onrender.com/dalle", {
+      // const promiseDalle = fetch("http://localhost:5000/dalle", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -55,7 +59,8 @@ export default function DreamForm() {
     }
   }
 
-  function handlePrompts(e) {
+  function handleKeywords(e) {
+    setKeywords(e.target.value);
     setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${e.target.value}`);
     setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
   }
@@ -65,14 +70,15 @@ export default function DreamForm() {
       <form onSubmit={handleSubmit}>
         <label>
           Dream keywords:
-          <input type="text" onChange={handlePrompts} />
+          <input type="text" onChange={handleKeywords} />
         </label>
         <button>
           Dream On
         </button>
       </form>
       {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
-      {!loadingStatus && chatOutput && <Interpretation chatOutput={chatOutput} imageUrl={imageUrl} loadingStatus={loadingStatus} />}
+      {!loadingStatus && chatOutput && <Interpretation keywords={keywords} chatOutput={chatOutput} imageUrl={imageUrl} />}
+      {!loadingStatus && chatOutput && <Explore />}
     </>
   )
 }

@@ -20,7 +20,7 @@ router.route("/").post(async (req, res) => {
     res.status(200).json(interpretation);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "There was an error processing the request"});
+    res.status(500).json({error: "There was an error processing the request"});
   }
 });
 
