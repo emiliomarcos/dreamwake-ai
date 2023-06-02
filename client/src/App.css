@@ -34,3 +34,13 @@ img {
 .explore {
   margin-top: 250px;
 }
+
+.share-button {
+  margin-top: 75px;
+  background-color: #adff2f;
+  size: 50px;
+}
+
+.share-button:hover {
+  background-color: #79B220;
+}

@@ -13,12 +13,17 @@ router.route("/").get(async (req, res) => {
   }
 });
 
-// router.route("/").post(async (req, res) => {
-//   try {
+router.route("/").post(async (req, res) => {
+  try {
+    const { keywords, mainOutput, imageUrl, bulletsString } = req.body;
 
-//   } catch (error) {
-
-//   }
-// });
+    const newDream = await Dream.create({keywords, mainOutput, imageUrl, bulletsOutput: bulletsString});
+    console.log("Dream created successfully")
+    res.status(200).json({newDream});
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to create dream" });
+  }
+});
 
 export default router;
