@@ -78,7 +78,7 @@ export default function DreamForm() {
       </form>
       {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
       {!loadingStatus && chatOutput && <Interpretation keywords={keywords} chatOutput={chatOutput} imageUrl={imageUrl} />}
-      <Explore />
+      {!loadingStatus && chatOutput && <Explore />}
     </>
   )
 }
