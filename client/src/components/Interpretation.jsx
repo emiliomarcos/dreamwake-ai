@@ -10,7 +10,8 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
 
   async function postDream() {
     try {
-      await fetch ("http://localhost:5000/dreams", {
+      await fetch("https://dreamwake-ai.onrender.com/dreams", {
+      // await fetch ("http://localhost:5000/dreams", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
