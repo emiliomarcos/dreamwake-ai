@@ -2,8 +2,6 @@ import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
 import Interpretation from "./Interpretation";
-import Explore from "./Explore";
-
 
 export default function DreamForm() {
   const [keywords, setKeywords] = useState("");
@@ -78,7 +76,6 @@ export default function DreamForm() {
       </form>
       {loadingStatus && <div className="loading">{loadingStatus && <FontAwesomeIcon icon={faMoon} size="xl" spin />}</div>}
       {!loadingStatus && chatOutput && <Interpretation keywords={keywords} chatOutput={chatOutput} imageUrl={imageUrl} />}
-      {!loadingStatus && chatOutput && <Explore />}
     </>
   )
 }

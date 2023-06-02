@@ -31,10 +31,6 @@ img {
   margin-top: 100px;
 }
 
-.explore {
-  margin-top: 250px;
-}
-
 .share-button {
   margin-top: 75px;
   background-color: #adff2f;
@@ -43,4 +39,8 @@ img {
 
 .share-button:hover {
   background-color: #79B220;
+}
+
+.navbar-link {
+  margin: 50px;
 }
