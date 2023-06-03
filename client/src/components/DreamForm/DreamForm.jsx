@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon } from "@fortawesome/free-solid-svg-icons";
-import Interpretation from "./Interpretation";
+import Interpretation from "../Interpretation/Interpretation";
+import "./DreamForm.css"
 
 export default function DreamForm() {
   const [keywords, setKeywords] = useState("");

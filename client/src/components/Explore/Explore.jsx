@@ -43,10 +43,6 @@ export default function Explore() {
   return (
     <div className="explore-dreams-container">
       {dreamsData && dreams}
-      {/* {dreamsData && dreams[13]}
-      {dreamsData && dreams[14]}
-      {dreamsData && dreams[15]}
-      {dreamsData && dreams[16]} */}
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import "./Dream.css"
 
 export default function Dream() {
   const { dreamId } = useParams();

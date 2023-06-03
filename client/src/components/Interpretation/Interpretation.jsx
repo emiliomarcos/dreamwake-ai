@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import "./Interpretation.css"
 
 export default function Interpretation({ keywords, chatOutput, imageUrl }) {
   const bulletsOutput = chatOutput.split("• ");
@@ -31,7 +32,6 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
       </div>
       <div className="image">
         <img src={`data:image/png;base64,${imageUrl}`} />
-        {/* <img src={imageUrl} /> */}
       </div>
       <button className="share-button" onClick={postDream}>Share to the world</button>
     </>
