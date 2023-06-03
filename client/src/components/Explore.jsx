@@ -6,9 +6,8 @@ export default function Explore() {
   const dreams = dreamsData && dreamsData.map(dream => {
     return (
       <div className="dream" key={dream._id}>
-        <img src={dream.imageUrl} />
+        <img src={dream.imageUrl} className="explore-image"/>
         <h5>{dream.keywords}</h5>
-        <p>{dream.mainOutput}</p>
       </div>
     )
   })
@@ -38,8 +37,12 @@ export default function Explore() {
   }, []);
 
   return (
-    <>
-      {dreams}
-    </>
+    <div className="explore-dreams">
+      {dreamsData && dreams}
+      {/* {dreamsData && dreams[13]}
+      {dreamsData && dreams[14]}
+      {dreamsData && dreams[15]}
+      {dreamsData && dreams[16]} */}
+    </div>
   )
 }

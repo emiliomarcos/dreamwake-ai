@@ -28,7 +28,7 @@ img {
 }
 
 .dream {
-  margin-top: 100px;
+  margin: 50px;
 }
 
 .share-button {
@@ -43,4 +43,27 @@ img {
 
 .navbar-link {
   margin: 50px;
+}
+
+.explore-image {
+  width: 100%;
+  height: auto;
+}
+
+.explore-dreams {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 800px) {
+  .explore-dreams {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .explore-dreams {
+    grid-template-columns: 1fr;
+  }
 }
