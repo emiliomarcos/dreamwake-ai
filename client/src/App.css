@@ -13,34 +13,6 @@ input {
   margin-left: 10px;
 }
 
-.interpretation {
-  margin-top: 50px;
-}
-
-img {
-  margin-top: 50px;
-  width: 400px;
-}
-
-.loading {
-  margin-top: 200px;
-  color: #FFD700;
-}
-
-.dream {
-  margin-top: 100px;
-}
-
-.explore {
-  margin-top: 250px;
-}
-
-.share-button {
-  margin-top: 75px;
-  background-color: #adff2f;
-  size: 50px;
-}
-
-.share-button:hover {
-  background-color: #79B220;
+.navbar-link {
+  margin: 50px;
 }
