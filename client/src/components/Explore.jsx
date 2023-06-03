@@ -6,6 +6,7 @@ export default function Explore() {
   const dreams = dreamsData && dreamsData.map(dream => {
     return (
       <div className="dream" key={dream._id}>
+        <img src={dream.imageUrl} />
         <h5>{dream.keywords}</h5>
         <p>{dream.mainOutput}</p>
       </div>
@@ -15,8 +16,8 @@ export default function Explore() {
   useEffect(() => {
     async function getDreams() {
       try {
-        const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        // const responseDB = await fetch("http://localhost:5000/dreams", {
+        // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        const responseDB = await fetch("http://localhost:5000/dreams", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
