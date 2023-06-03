@@ -1,14 +1,18 @@
+import { Link } from "react-router-dom"
 import { useState, useEffect } from "react";
+import "./Explore.css"
 
 export default function Explore() {
   const [dreamsData, setDreamsData] = useState(null);
 
   const dreams = dreamsData && dreamsData.map(dream => {
     return (
-      <div className="dream" key={dream._id}>
-        <img src={dream.imageUrl} className="explore-image"/>
-        <h5>{dream.keywords}</h5>
-      </div>
+      <Link to={`/dreams/${dream._id}`} key={dream._id}>
+        <div className="explore-dream">
+          <img src={dream.imageUrl} className="explore-dream-image"/>
+          <h5>{dream.keywords}</h5>
+        </div>
+      </Link>
     )
   })
 
@@ -37,7 +41,7 @@ export default function Explore() {
   }, []);
 
   return (
-    <div className="explore-dreams">
+    <div className="explore-dreams-container">
       {dreamsData && dreams}
       {/* {dreamsData && dreams[13]}
       {dreamsData && dreams[14]}

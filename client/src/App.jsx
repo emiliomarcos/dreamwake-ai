@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { DreamForm, Explore } from './components'
+import { DreamForm, Explore, Dream } from './components'
 import './App.css'
 
 export default function App() {
@@ -13,6 +13,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<DreamForm />} />
         <Route path="/dreams" element={<Explore />} />
+        <Route path="/dreams/:dreamId" element={<Dream />} />
       </Routes>
     </BrowserRouter>
   )
