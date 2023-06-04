@@ -7,8 +7,8 @@ export default function Explore() {
 
   const dreams = dreamsData && dreamsData.map(dream => {
     return (
-      <Link to={`/dreams/${dream._id}`} key={dream._id}>
-        <div className="explore-dream">
+      <Link to={`/dreams/${dream._id}`} key={dream._id} className="explore-dream">
+        <div >
           <img src={dream.imageUrl} className="explore-dream-image"/>
           <h5>{dream.keywords}</h5>
         </div>

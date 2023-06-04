@@ -1,17 +1,24 @@
 .explore-dream {
   margin: auto;
-  color: white;
+  color: #fffff2;
+  text-decoration: none;
+  padding: 1rem;
+  transition: box-shadow 0.4s ease;
 }
 
-.explore-dream-image {
-  width: 100%;
-  height: auto;
+.explore-dream:hover {
+  box-shadow: 0 0 20px 5px #381a60;
 }
 
 .explore-dreams-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+
+.explore-dream-image {
+  width: 100%;
+  height: auto;
 }
 
 @media (max-width: 800px) {
