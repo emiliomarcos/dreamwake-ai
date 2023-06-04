@@ -1,0 +1,29 @@
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 4rem;
+  background-color: #14082A;
+  width: 100%;
+  margin: 0;
+}
+
+.navbar-title {
+  color: #fffff2;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.navbar-link {
+  color: #B57EDC;
+  text-decoration: none;
+}
+
+.navbar-link:hover {
+  color:#9064B0;
+}
