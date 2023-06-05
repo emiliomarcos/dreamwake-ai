@@ -21,7 +21,6 @@ export default function App() {
 
         if (responseDB.ok) {
           const data = await responseDB.json();
-          console.log(data);
           setDreamsData(data);
         }
       } catch (error) {
