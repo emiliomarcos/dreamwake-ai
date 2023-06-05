@@ -1,3 +1,9 @@
+.explore-dreams-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
 .explore-dream {
   margin: auto;
   color: #fffff2;
@@ -8,12 +14,6 @@
 
 .explore-dream:hover {
   box-shadow: 0 0 20px 5px #381a60;
-}
-
-.explore-dreams-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
 }
 
 .explore-dream-image {
