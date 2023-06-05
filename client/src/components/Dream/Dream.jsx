@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useAppContext from "../App/useAppContext";
+import { Loader } from "../"
 import "./Dream.css"
 
 export default function Dream() {
@@ -19,9 +20,7 @@ export default function Dream() {
     )
   } else {
     return (
-      <>
-        <h1>Loading...</h1>
-      </>
+      <Loader />
     )
   }
 }

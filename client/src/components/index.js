@@ -1,4 +1,6 @@
-export { default as DreamForm } from "./DreamForm/DreamForm";
-export { default as Explore } from "./Explore/Explore";
+export { default as DreamForm } from "./DreamForm/DreamForm"
+export { default as Explore } from "./Explore/Explore"
 export { default as Dream } from "./Dream/Dream"
 export { default as Navbar } from "./Navbar/Navbar"
+export { default as Interpretation } from "./Interpretation/Interpretation"
+export { default as Loader } from "./Loader/Loader"
