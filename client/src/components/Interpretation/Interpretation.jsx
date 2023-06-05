@@ -8,8 +8,6 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
 
   const mainOutput = bulletsOutput.pop();
 
-  const bulletsString = bulletsOutput ? bulletsOutput.join() : "";
-
   const [sharedStatus, setSharedStatus] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
 
@@ -17,18 +15,21 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
     if (!sharedStatus) {
       try {
         setIsPosting(true);
-        await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        // await fetch ("http://localhost:5000/dreams", {
+        // const response = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        const response = await fetch ("http://localhost:5000/dreams", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsString })
+          body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsOutput })
         })
-        setSharedStatus(true);
-        setIsPosting(false);
+        if (response.ok) {
+          setSharedStatus(true);
+        }
       } catch (error) {
         console.error(error);
+      } finally {
+        setIsPosting(false);
       }
     }
   }

@@ -7,7 +7,6 @@ const hourglassIcons = [faHourglassStart, faHourglassHalf, faHourglassEnd];
 
 export default function Loader() {
   const [iconIndex, setIconIndex] = useState(0);
-  console.log(iconIndex)
 
   useEffect(() => {
     const interval = setInterval(() => {
