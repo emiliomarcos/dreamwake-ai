@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Interpretation.css"
 
@@ -9,18 +10,26 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
 
   const bulletsString = bulletsOutput ? bulletsOutput.join() : "";
 
+  const [sharedStatus, setSharedStatus] = useState(false);
+  const [isPosting, setIsPosting] = useState(false);
+
   async function postDream() {
-    try {
-      await fetch("https://dreamwake-ai.onrender.com/dreams", {
-      // await fetch ("http://localhost:5000/dreams", {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsString })
-      })
-    } catch (error) {
-      console.error(error);
+    if (!sharedStatus) {
+      try {
+        setIsPosting(true);
+        await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        // await fetch ("http://localhost:5000/dreams", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsString })
+        })
+        setSharedStatus(true);
+        setIsPosting(false);
+      } catch (error) {
+        console.error(error);
+      }
     }
   }
 
@@ -33,7 +42,9 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
       <div className="image">
         <img src={`data:image/png;base64,${imageUrl}`} />
       </div>
-      <button className="share-button" onClick={postDream}>Share to the world</button>
+      {isPosting ? <button className="posting-button">Sharing...</button> :
+        <button className={sharedStatus ? "shared-button" : "share-button"} onClick={postDream}>{sharedStatus ? "Shared" : "Share to the world"}</button>
+      }
     </>
   )
 }

@@ -19,3 +19,31 @@
 .share-button:hover {
   background-color: #79B220;
 }
+
+.shared-button {
+  margin-top: 4rem;
+  background-color: #436311;
+  padding: 0.5rem;
+  width: 5rem;
+  height: 3rem;
+  min-width: 200px;
+  cursor: default;
+}
+
+.shared-button:hover {
+  background-color: #436311;
+}
+
+.posting-button {
+  margin-top: 4rem;
+  background-color: #79B220;
+  padding: 0.5rem;
+  width: 5rem;
+  height: 3rem;
+  min-width: 200px;
+  cursor: wait;
+}
+
+.posting-button:hover {
+  background-color: #79B220;
+}
