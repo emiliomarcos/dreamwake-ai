@@ -10,6 +10,7 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
 
   const [sharedStatus, setSharedStatus] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
+  const [shareFailed, setShareFailed] = useState(false);
 
   async function postDream() {
     if (!sharedStatus) {
@@ -25,6 +26,8 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
         })
         if (response.ok) {
           setSharedStatus(true);
+        } else {
+          setShareFailed(true);
         }
       } catch (error) {
         console.error(error);
@@ -34,6 +37,7 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
     }
   }
 
+  console.log(shareFailed)
   return (
     <>
       <div className="interpretation">
@@ -43,9 +47,9 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
       <div className="image">
         <img src={`data:image/png;base64,${imageUrl}`} />
       </div>
-      {isPosting ? <button className="posting-button">Sharing...</button> :
-        <button className={sharedStatus ? "shared-button" : "share-button"} onClick={postDream}>{sharedStatus ? "Shared" : "Share to the world"}</button>
-      }
+      {!shareFailed ? isPosting ? <button className="posting-button">Sharing...</button> :
+        <button className={sharedStatus ? "shared-button" : "share-button"} onClick={postDream}>{sharedStatus ? "Shared" : "Share to the world"}</button> :
+        <button className="failed-button">Failed to share</button>}
     </>
   )
 }

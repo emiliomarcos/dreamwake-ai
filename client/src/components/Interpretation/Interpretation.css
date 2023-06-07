@@ -42,3 +42,17 @@
 .posting-button:hover {
   background-color: #79B220;
 }
+
+.failed-button {
+  margin-top: 4rem;
+  background-color: #5b5b5b;
+  padding: 0.5rem;
+  width: 5rem;
+  height: 3rem;
+  min-width: 200px;
+  cursor: default;
+}
+
+.failed-button:hover {
+  background-color: #5b5b5b;
+}
