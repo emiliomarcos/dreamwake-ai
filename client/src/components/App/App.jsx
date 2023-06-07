@@ -11,8 +11,8 @@ export default function App() {
   useEffect(() => {
     async function getDreamsData() {
       try {
-        // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        const responseDB = await fetch("http://localhost:5000/dreams", {
+        const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        // const responseDB = await fetch("http://localhost:5000/dreams", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"

@@ -15,8 +15,8 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
     if (!sharedStatus) {
       try {
         setIsPosting(true);
-        // const response = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        const response = await fetch ("http://localhost:5000/dreams", {
+        const response = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        // const response = await fetch ("http://localhost:5000/dreams", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
