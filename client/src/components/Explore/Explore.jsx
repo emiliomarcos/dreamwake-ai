@@ -1,5 +1,6 @@
 import useAppContext from "../App/useAppContext";
 import { Link } from "react-router-dom";
+import { Loader } from "../"
 import "./Explore.css";
 
 export default function Explore() {
@@ -18,7 +19,7 @@ export default function Explore() {
 
   return (
     <div className="explore-dreams-container">
-      {dreamsData && dreams}
+      {dreamsData ? dreams : <Loader />}
     </div>
   )
 }
