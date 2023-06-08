@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DreamForm, Explore, Dream, Navbar } from '../';
+import { DreamForm, Explore, Dream, Navbar, Lucid } from '../';
 import './App.css'
 
 export const AppContext = createContext();
@@ -11,8 +11,8 @@ export default function App() {
   useEffect(() => {
     async function getDreamsData() {
       try {
-        const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        // const responseDB = await fetch("http://localhost:5000/dreams", {
+        // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        const responseDB = await fetch("http://localhost:5000/dreams", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -41,6 +41,7 @@ export default function App() {
             <Route path="/" element={<DreamForm />} />
             <Route path="/dreams" element={<Explore />} />
             <Route path="/dreams/:dreamId" element={<Dream />} />
+            <Route path="/luciddream" element={<Lucid />} />
           </Routes>
         </div>
       </BrowserRouter>
