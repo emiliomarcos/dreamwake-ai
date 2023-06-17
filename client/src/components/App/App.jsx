@@ -7,12 +7,13 @@ export const AppContext = createContext();
 
 export default function App() {
   const [dreamsData, setDreamsData] = useState(null);
+  const [needsUpdate, setNeedsUpdate] = useState(false);
 
   useEffect(() => {
     async function getDreamsData() {
       try {
-        // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        const responseDB = await fetch("http://localhost:5000/dreams", {
+        const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        // const responseDB = await fetch("http://localhost:5000/dreams", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -25,15 +26,16 @@ export default function App() {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setNeedsUpdate(false);
       }
     }
-
     getDreamsData();
-  }, []);
+  }, [needsUpdate]);
 
 
   return (
-    <AppContext.Provider value={{ dreamsData, setDreamsData }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">

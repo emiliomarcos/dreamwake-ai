@@ -1,3 +1,4 @@
+import useAppContext from "../App/useAppContext";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Interpretation.css"
@@ -8,6 +9,8 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
 
   const mainOutput = bulletsOutput.pop();
 
+  const { setNeedsUpdate } = useAppContext();
+
   const [sharedStatus, setSharedStatus] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
   const [shareFailed, setShareFailed] = useState(false);
@@ -16,8 +19,8 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
     if (!sharedStatus) {
       try {
         setIsPosting(true);
-        // const response = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        const response = await fetch ("http://localhost:5000/dreams", {
+        const response = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        // const response = await fetch ("http://localhost:5000/dreams", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -26,6 +29,7 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
         })
         if (response.ok) {
           setSharedStatus(true);
+          setNeedsUpdate(true);
         } else {
           setShareFailed(true);
         }
