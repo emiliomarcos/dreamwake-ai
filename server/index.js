@@ -1,8 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { gptRoutes } from "./routes/index.js";
-import { dalleRoutes } from "./routes/index.js";
-import { dreamRoutes } from "./routes/index.js";
+import { gptRoutes, dalleRoutes, dreamRoutes, lucidRoutes } from "./routes/index.js";
 import { connect } from "mongoose";
 import * as dotenv from "dotenv";
 
@@ -20,6 +18,7 @@ app.use(cors({
 app.use("/gpt", gptRoutes);
 app.use("/dalle", dalleRoutes);
 app.use("/dreams", dreamRoutes);
+app.use("/luciddream", lucidRoutes);
 
 app.get("/", async (req, res) => {
   res.send("Server has woken up");

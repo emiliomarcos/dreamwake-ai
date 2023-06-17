@@ -1,3 +1,4 @@
+import useAppContext from "../App/useAppContext";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import "./Interpretation.css"
@@ -7,6 +8,8 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
   bulletsOutput.shift();
 
   const mainOutput = bulletsOutput.pop();
+
+  const { setNeedsUpdate } = useAppContext();
 
   const [sharedStatus, setSharedStatus] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
@@ -26,6 +29,7 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
         })
         if (response.ok) {
           setSharedStatus(true);
+          setNeedsUpdate(true);
         } else {
           setShareFailed(true);
         }
@@ -37,7 +41,6 @@ export default function Interpretation({ keywords, chatOutput, imageUrl }) {
     }
   }
 
-  console.log(shareFailed)
   return (
     <>
       <div className="interpretation">

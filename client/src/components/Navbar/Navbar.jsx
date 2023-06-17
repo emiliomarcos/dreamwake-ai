@@ -7,6 +7,7 @@ export default function Navbar() {
       <Link to="/" className="navbar-title"><h2>Dreamwake AI</h2></Link>
       <Link to="/" className="navbar-link">Interpret</Link>
       <Link to="/dreams" className="navbar-link">Explore</Link>
+      <Link to="/luciddream" className="navbar-link">Lucid Dream</Link>
     </nav>
   )
 }

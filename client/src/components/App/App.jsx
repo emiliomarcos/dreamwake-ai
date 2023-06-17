@@ -1,12 +1,13 @@
 import { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DreamForm, Explore, Dream, Navbar } from '../';
+import { DreamForm, Explore, Dream, Navbar, Lucid } from '../';
 import './App.css'
 
 export const AppContext = createContext();
 
 export default function App() {
   const [dreamsData, setDreamsData] = useState(null);
+  const [needsUpdate, setNeedsUpdate] = useState(false);
 
   useEffect(() => {
     async function getDreamsData() {
@@ -25,15 +26,16 @@ export default function App() {
         }
       } catch (error) {
         console.error(error);
+      } finally {
+        setNeedsUpdate(false);
       }
     }
-
     getDreamsData();
-  }, []);
+  }, [needsUpdate]);
 
 
   return (
-    <AppContext.Provider value={{ dreamsData, setDreamsData }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">
@@ -41,6 +43,7 @@ export default function App() {
             <Route path="/" element={<DreamForm />} />
             <Route path="/dreams" element={<Explore />} />
             <Route path="/dreams/:dreamId" element={<Dream />} />
+            <Route path="/luciddream" element={<Lucid />} />
           </Routes>
         </div>
       </BrowserRouter>
