@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Interpretation, Loader, SignIn, SignUp } from "../";
+import { Interpretation, Loader } from "../";
 import "./DreamForm.css"
 
 export default function DreamForm() {
@@ -75,9 +75,6 @@ export default function DreamForm() {
       </form>
       {loadingStatus && <Loader />}
       {!loadingStatus && chatOutput && <Interpretation keywords={keywords} chatOutput={chatOutput} imageUrl={imageUrl} />}
-      <SignIn />
-      <br></br>
-      <SignUp />
     </>
   )
 }

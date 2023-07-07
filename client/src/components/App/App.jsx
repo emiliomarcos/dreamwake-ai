@@ -1,6 +1,8 @@
 import { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DreamForm, Explore, Dream, Navbar, Lucid } from '../';
+import { DreamForm, Explore, Dream, Navbar, Lucid, SignIn, SignUp, SignOut } from '../';
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 import './App.css'
 
 export const AppContext = createContext();
@@ -8,6 +10,7 @@ export const AppContext = createContext();
 export default function App() {
   const [dreamsData, setDreamsData] = useState(null);
   const [needsUpdate, setNeedsUpdate] = useState(false);
+  const [userId, setUserId] = useState(null);
 
   useEffect(() => {
     async function getDreamsData() {
@@ -33,9 +36,21 @@ export default function App() {
     getDreamsData();
   }, [needsUpdate]);
 
+  useEffect(() => {
+    function unsubscribe() {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          setUserId(user.uid);
+        } else {
+          setUserId(null);
+        }
+      })
+    }
+    return () => unsubscribe();
+  }, [])
 
   return (
-    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">
@@ -45,6 +60,9 @@ export default function App() {
             <Route path="/dreams/:dreamId" element={<Dream />} />
             <Route path="/luciddream" element={<Lucid />} />
           </Routes>
+          {!userId && <SignIn />}
+          {!userId && <SignUp />}
+          {userId && <SignOut />}
         </div>
       </BrowserRouter>
     </AppContext.Provider>

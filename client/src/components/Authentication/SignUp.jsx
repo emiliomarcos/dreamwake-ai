@@ -9,14 +9,17 @@ export default function SignUp() {
 
   async function signUpUser(e) {
     e.preventDefault();
-    const user = await createUserWithEmailAndPassword(auth, email, password);
-    console.log(user);
+    try {
+      createUserWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+      console.error(error);
+    }
   }
 
   return (
     <form onSubmit={signUpUser}>
-      <input type="email" placeholder="email" value={email} onChange={e => setEmail(e.target.value)}></input>
-      <input type="password" placeholder="password" value={password} onChange={e => setPassword(e.target.value)}></input>
+      <input type="email" placeholder="email" autoComplete="off" value={email} onChange={e => setEmail(e.target.value)}></input>
+      <input type="password" placeholder="password" autoComplete="off" value={password} onChange={e => setPassword(e.target.value)}></input>
       <button>Sign Up</button>
     </form>
   )
