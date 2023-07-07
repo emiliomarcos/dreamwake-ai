@@ -64,7 +64,7 @@ export default function DreamForm() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="dream-form">
         <label>
           Dream keywords:
           <input type="text" onChange={handleKeywords} />

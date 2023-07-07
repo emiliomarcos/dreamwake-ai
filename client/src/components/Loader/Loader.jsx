@@ -15,7 +15,7 @@ export default function Loader() {
       } else {
         setIconIndex(0);
       }
-    }, 750);
+    }, 500);
 
     return () => clearInterval(interval);
   }, [iconIndex])

@@ -1,0 +1,27 @@
+.login-form {
+  margin-bottom: 3em;
+}
+
+.login-button {
+  background-color: green;
+}
+
+.signup-button {
+  background-color: green;
+}
+
+.logout-button {
+  background-color: red;
+}
+
+.login-button:hover {
+  background-color: #004C00;
+}
+
+.signup-button:hover {
+  background-color: #004C00;
+}
+
+.logout-button:hover {
+  background-color: #990000;
+}
