@@ -3,11 +3,11 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import "./Authentication.css";
 
-export default function SignIn() {
+export default function LogIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  async function signInUser(e) {
+  async function logInUser(e) {
     e.preventDefault();
     try {
       signInWithEmailAndPassword(auth, email, password)
@@ -17,10 +17,10 @@ export default function SignIn() {
   }
 
   return (
-    <form onSubmit={signInUser}>
+    <form onSubmit={logInUser} className="login-form">
       <input type="email" placeholder="email" autoComplete="off" value={email} onChange={(e) => setEmail(e.target.value)}></input>
       <input type="password" placeholder="password" autoComplete="off" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-      <button>Sign in</button>
+      <button className="login-button">Log in</button>
     </form>
   )
 }

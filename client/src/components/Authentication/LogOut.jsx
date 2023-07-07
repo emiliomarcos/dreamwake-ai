@@ -2,8 +2,8 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import "./Authentication.css";
 
-export default function SignOut() {
-  async function signOutUser() {
+export default function LogOut() {
+  async function logOutUser() {
     try {
       signOut(auth);
     } catch (error) {
@@ -11,6 +11,6 @@ export default function SignOut() {
     }
   }
   return (
-    <button onClick={signOutUser}>Sign Out</button>
+    <button onClick={logOutUser} className="logout-button">Log Out</button>
   )
 }
