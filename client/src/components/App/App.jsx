@@ -37,17 +37,15 @@ export default function App() {
   }, [needsUpdate]);
 
   useEffect(() => {
-    function unsubscribe() {
-      onAuthStateChanged(auth, (user) => {
-        if (user) {
-          setUserId(user.uid);
-        } else {
-          setUserId(null);
-        }
-      })
-    }
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUserId(user.uid);
+      } else {
+        setUserId(null);
+      }
+    })
     return () => unsubscribe();
-  }, [])
+  }, []);
 
   return (
     <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId }}>
