@@ -14,7 +14,7 @@
 
 
 ## *Features* 🔍
-AI dream nalysis.
+AI dream analysis.
 Dream gallery.
 Dream journal.
 
