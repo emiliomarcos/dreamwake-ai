@@ -8,7 +8,7 @@ export default function Gallery() {
 
   const dreams = dreamsData && dreamsData.map(dream => {
     return (
-      <Link to={`/dreams/${dream._id}`} key={dream._id} className="gallery-dream">
+      <Link to={`/gallery/${dream._id}`} key={dream._id} className="gallery-dream">
         <div>
           <img src={dream.imageUrl} className="gallery-dream-image"/>
           <h5>{dream.keywords}</h5>
