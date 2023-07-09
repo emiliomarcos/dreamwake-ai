@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DreamForm, Explore, Dream, Navbar, Lucid, Authentication } from '../';
+import { DreamForm, Gallery, Dream, Navbar, Lucid, Authentication } from '../';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import './App.css'
@@ -54,8 +54,8 @@ export default function App() {
         <div className="content">
           <Routes>
             <Route path="/" element={<DreamForm />} />
-            <Route path="/dreams" element={<Explore />} />
-            <Route path="/dreams/:dreamId" element={<Dream />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:dreamId" element={<Dream />} />
             <Route path="/luciddream" element={<Lucid />} />
             <Route path="/authentication" element={<Authentication />} />
           </Routes>

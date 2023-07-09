@@ -17,7 +17,7 @@ app.use(cors({
 
 app.use("/gpt", gptRoutes);
 app.use("/dalle", dalleRoutes);
-app.use("/dreams", dreamRoutes);
+app.use("/gallery", dreamRoutes);
 app.use("/luciddream", lucidRoutes);
 
 app.get("/", async (req, res) => {
