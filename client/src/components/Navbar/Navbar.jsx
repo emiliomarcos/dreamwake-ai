@@ -7,9 +7,10 @@ export default function Navbar() {
   return (
     <nav>
       <Link to="/" className="navbar-title"><h2>DreamWake AI</h2></Link>
-      <Link to="/" className="navbar-link">Interpret</Link>
+      <Link to="/" className="navbar-link">Analyze</Link>
       <Link to="/gallery" className="navbar-link">Gallery</Link>
       <Link to="/luciddream" className="navbar-link">Lucid Dream</Link>
+      <Link to="/journal" className="navbar-link">Journal</Link>
       <Link to="/authentication" className="navbar-icon"><FontAwesomeIcon icon={faUserAstronaut} size="xl" /></Link>
     </nav>
   )

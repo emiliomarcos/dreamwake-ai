@@ -5,6 +5,7 @@ export { default as Navbar } from "./Navbar/Navbar"
 export { default as Interpretation } from "./Interpretation/Interpretation"
 export { default as Loader } from "./Loader/Loader"
 export { default as Lucid } from "./Lucid/Lucid"
+export { default as Journal } from './Journal/Journal'
 export { default as LogIn } from "./Authentication/LogIn"
 export { default as LogOut } from "./Authentication/LogOut"
 export { default as SignUp } from "./Authentication/SignUp"
