@@ -12,8 +12,8 @@ export default function Lucid() {
 
     try {
       setLoadingStatus(true);
-      const responseLucid = await fetch("https://dreamwake-ai.onrender.com/luciddream", {
-      // const responseLucid = await fetch("http://localhost:5000/luciddream", {
+      // const responseLucid = await fetch("https://dreamwake-ai.onrender.com/luciddream", {
+      const responseLucid = await fetch("http://localhost:5000/luciddream", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

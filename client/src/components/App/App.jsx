@@ -11,12 +11,15 @@ export default function App() {
   const [dreamsData, setDreamsData] = useState(null);
   const [needsUpdate, setNeedsUpdate] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [keywords, setKeywords] = useState("");
+  const [chatOutput, setChatOutput] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
 
   useEffect(() => {
     async function getDreamsData() {
       try {
-        const responseDB = await fetch("https://dreamwake-ai.onrender.com/gallery", {
-        // const responseDB = await fetch("http://localhost:5000/gallery", {
+        // const responseDB = await fetch("https://dreamwake-ai.onrender.com/gallery", {
+        const responseDB = await fetch("http://localhost:5000/gallery", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -48,7 +51,7 @@ export default function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, keywords, setKeywords, chatOutput, setChatOutput, imageUrl, setImageUrl }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">
