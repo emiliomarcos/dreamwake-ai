@@ -11,9 +11,12 @@ export default function App() {
   const [dreamsData, setDreamsData] = useState(null);
   const [needsUpdate, setNeedsUpdate] = useState(false);
   const [userId, setUserId] = useState(null);
-  const [keywords, setKeywords] = useState("");
-  const [chatOutput, setChatOutput] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
+  const [interpretationState, setInterpretationState] = useState({
+    keywords: "",
+    chatOutput: null,
+    imageUrl: null,
+    isPosted: false
+  })
 
   useEffect(() => {
     async function getDreamsData() {
@@ -51,7 +54,7 @@ export default function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, keywords, setKeywords, chatOutput, setChatOutput, imageUrl, setImageUrl }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, interpretationState, setInterpretationState }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">

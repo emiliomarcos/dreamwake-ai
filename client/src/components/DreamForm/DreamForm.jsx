@@ -4,7 +4,7 @@ import { Interpretation, Loader } from "../";
 import "./DreamForm.css"
 
 export default function DreamForm() {
-  const { setKeywords, chatOutput, setChatOutput, setImageUrl } = useAppContext();
+  const { interpretationState, setInterpretationState } = useAppContext();
 
   const [currentKeywords, setCurrentKeywords] = useState("");
   const [chatPrompt, setChatPrompt] = useState("");
@@ -13,7 +13,7 @@ export default function DreamForm() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setKeywords(currentKeywords);
+    setInterpretationState(prevState => ({...prevState, keywords: currentKeywords, isPosted: false}));
 
     try {
       setLoadingStatus(true);
@@ -39,14 +39,14 @@ export default function DreamForm() {
 
       if (responseGpt.ok) {
         const responseGptJSON = await responseGpt.json();
-        setChatOutput(responseGptJSON.choices[0].text);
+        setInterpretationState(prevState => ({...prevState, chatOutput: responseGptJSON.choices[0].text}));
       } else {
         console.error(responseGpt);
       }
 
       if (responseDalle.ok) {
         const responseDalleJSON = await responseDalle.json();
-        setImageUrl(responseDalleJSON.data[0].b64_json);
+        setInterpretationState(prevState => ({...prevState, imageUrl: responseDalleJSON.data[0].b64_json}));
       } else {
         console.error(responseDalle);
       }
@@ -75,7 +75,7 @@ export default function DreamForm() {
           Dream On
         </button>
       </form>
-      {loadingStatus ? <Loader /> : chatOutput && <Interpretation />}
+      {loadingStatus ? <Loader /> : interpretationState.chatOutput && <Interpretation />}
     </>
   )
 }
