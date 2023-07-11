@@ -6,7 +6,7 @@ import "./Gallery.css";
 export default function Gallery() {
   const { dreamsData } = useAppContext();
 
-  const dreams = dreamsData && dreamsData.map(dream => {
+  const dreams = dreamsData && dreamsData.filter(dream => dream.isPublic != false).map(dream => {
     return (
       <Link to={`/gallery/${dream._id}`} key={dream._id} className="gallery-dream">
         <div>

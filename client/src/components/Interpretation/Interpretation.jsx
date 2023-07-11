@@ -11,7 +11,6 @@ export default function Interpretation() {
 
   const mainOutput = bulletsOutput.pop();
 
-  // const [sharedStatus, setSharedStatus] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
   const [shareFailed, setShareFailed] = useState(false);
 
@@ -19,8 +18,8 @@ export default function Interpretation() {
     if (!isPosted) {
       try {
         setIsPosting(true);
-        // const response = await fetch("https://dreamwake-ai.onrender.com/gallery", {
-        const response = await fetch ("http://localhost:5000/gallery", {
+        const response = await fetch("https://dreamwake-ai.onrender.com/gallery", {
+        // const response = await fetch ("http://localhost:5000/gallery", {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
