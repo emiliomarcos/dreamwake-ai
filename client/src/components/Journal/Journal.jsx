@@ -8,7 +8,7 @@ export default function Journal() {
 
   if (!userId) {
     return (
-      <h3>Sign in to use journal</h3>
+      <h3>Sign in needed to use journal</h3>
     )
   }
 

@@ -3,19 +3,20 @@ import useAppContext from "../App/useAppContext";
 import "./Interpretation.css"
 
 export default function Interpretation() {
-  const { setNeedsUpdate, userId, keywords, chatOutput, imageUrl } = useAppContext();
+  const { setNeedsUpdate, userId, interpretationState, setInterpretationState } = useAppContext();
+  const { keywords, chatOutput, imageUrl, isPosted } = interpretationState;
 
   const bulletsOutput = chatOutput.split("• ");
   bulletsOutput.shift();
 
   const mainOutput = bulletsOutput.pop();
 
-  const [sharedStatus, setSharedStatus] = useState(false);
+  // const [sharedStatus, setSharedStatus] = useState(false);
   const [isPosting, setIsPosting] = useState(false);
   const [shareFailed, setShareFailed] = useState(false);
 
   async function postDream(isPublic) {
-    if (!sharedStatus) {
+    if (!isPosted) {
       try {
         setIsPosting(true);
         // const response = await fetch("https://dreamwake-ai.onrender.com/gallery", {
@@ -27,7 +28,7 @@ export default function Interpretation() {
           body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsOutput, userId, isPublic })
         })
         if (response.ok) {
-          setSharedStatus(true);
+          setInterpretationState(prevState => ({...prevState, isPosted: true}));
           setNeedsUpdate(true);
         } else {
           setShareFailed(true);
@@ -50,12 +51,15 @@ export default function Interpretation() {
       <div className="image">
         <img src={`data:image/png;base64,${imageUrl}`} />
       </div>
-      {!shareFailed ? isPosting ? <button className="posting-button">Sharing...</button> :
-        <button className={sharedStatus ? "shared-button" : "share-button"} onClick={() => postDream(true)}>{sharedStatus ? "Shared" : "Share to the world"}</button> :
-        <button className="failed-button">Failed to share</button>}
-      {!shareFailed ? isPosting ? <button className="posting-button">Sharing...</button> :
-        <button className={sharedStatus ? "shared-button" : "share-button"} onClick={() => postDream(false)}>{sharedStatus ? "Saved" : "Save to my journal"}</button> :
-        <button className="failed-button">Failed to share</button>}
+      {isPosted ? <button className="shared-button">Posted</button> :
+        shareFailed ? <button className="disabled-button">Post Failed</button> :
+          isPosting ? <button className="posting-button">Posting...</button> :
+            <div className="share-buttons-container">
+              <button className="share-button" onClick={() => postDream(true)}>Share to Gallery</button>
+              {userId ? <button className="share-button" onClick={() => postDream(false)}>Save to Journal</button> :
+                <button className="disabled-button">Save to Journal<span className="sign-in-needed">Sign in needed</span></button>}
+            </div>
+      }
     </>
   )
 }
