@@ -1,0 +1,34 @@
+.gallery-dreams-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.gallery-dream {
+  margin: auto;
+  color: #fffff2;
+  text-decoration: none;
+  padding: 1rem;
+  transition: box-shadow 0.4s ease;
+}
+
+.gallery-dream:hover {
+  box-shadow: 0 0 20px 5px #381a60;
+}
+
+.gallery-dream-image {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 800px) {
+  .gallery-dreams-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .gallery-dreams-container {
+    grid-template-columns: 1fr;
+  }
+}

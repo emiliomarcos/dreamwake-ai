@@ -1,17 +1,19 @@
 import { useState } from "react";
+import useAppContext from "../App/useAppContext";
 import { Interpretation, Loader } from "../";
 import "./DreamForm.css"
 
 export default function DreamForm() {
-  const [keywords, setKeywords] = useState("");
+  const { interpretationState, setInterpretationState } = useAppContext();
+
+  const [currentKeywords, setCurrentKeywords] = useState("");
   const [chatPrompt, setChatPrompt] = useState("");
   const [imagePrompt, setImagePrompt] = useState("");
-  const [chatOutput, setChatOutput] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
+    setInterpretationState(prevState => ({...prevState, keywords: currentKeywords, isPosted: false}));
 
     try {
       setLoadingStatus(true);
@@ -37,14 +39,14 @@ export default function DreamForm() {
 
       if (responseGpt.ok) {
         const responseGptJSON = await responseGpt.json();
-        setChatOutput(responseGptJSON.choices[0].text);
+        setInterpretationState(prevState => ({...prevState, chatOutput: responseGptJSON.choices[0].text}));
       } else {
         console.error(responseGpt);
       }
 
       if (responseDalle.ok) {
         const responseDalleJSON = await responseDalle.json();
-        setImageUrl(responseDalleJSON.data[0].b64_json);
+        setInterpretationState(prevState => ({...prevState, imageUrl: responseDalleJSON.data[0].b64_json}));
       } else {
         console.error(responseDalle);
       }
@@ -57,9 +59,9 @@ export default function DreamForm() {
   }
 
   function handleKeywords(e) {
-    setKeywords(e.target.value);
-    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${e.target.value}`);
-    setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
+    setCurrentKeywords(e.target.value);
+    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${currentKeywords}`);
+    setImagePrompt(`lucid dreaming scene with these keywords: ${currentKeywords}`);
   }
 
   return (
@@ -73,8 +75,7 @@ export default function DreamForm() {
           Dream On
         </button>
       </form>
-      {loadingStatus && <Loader />}
-      {!loadingStatus && chatOutput && <Interpretation keywords={keywords} chatOutput={chatOutput} imageUrl={imageUrl} />}
+      {loadingStatus ? <Loader /> : interpretationState.chatOutput && <Interpretation />}
     </>
   )
 }

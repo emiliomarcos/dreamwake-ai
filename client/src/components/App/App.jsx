@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DreamForm, Explore, Dream, Navbar, Lucid, Authentication } from '../';
+import { DreamForm, Gallery, Dream, Navbar, Lucid, Authentication, Journal } from '../';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import './App.css'
@@ -11,12 +11,18 @@ export default function App() {
   const [dreamsData, setDreamsData] = useState(null);
   const [needsUpdate, setNeedsUpdate] = useState(false);
   const [userId, setUserId] = useState(null);
+  const [interpretationState, setInterpretationState] = useState({
+    keywords: "",
+    chatOutput: null,
+    imageUrl: null,
+    isPosted: false
+  })
 
   useEffect(() => {
     async function getDreamsData() {
       try {
-        const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
-        // const responseDB = await fetch("http://localhost:5000/dreams", {
+        const responseDB = await fetch("https://dreamwake-ai.onrender.com/gallery", {
+        // const responseDB = await fetch("http://localhost:5000/gallery", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -48,15 +54,17 @@ export default function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, interpretationState, setInterpretationState }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">
           <Routes>
             <Route path="/" element={<DreamForm />} />
-            <Route path="/dreams" element={<Explore />} />
-            <Route path="/dreams/:dreamId" element={<Dream />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery/:dreamId" element={<Dream />} />
             <Route path="/luciddream" element={<Lucid />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/journal/:dreamId" element={<Dream />} />
             <Route path="/authentication" element={<Authentication />} />
           </Routes>
         </div>

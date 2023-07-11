@@ -25,10 +25,10 @@ router.route("/").get(async (req, res) => {
 
 router.route("/").post(async (req, res) => {
   try {
-    const { keywords, mainOutput, imageUrl, bulletsOutput } = req.body;
+    const { keywords, mainOutput, imageUrl, bulletsOutput, userId, isPublic } = req.body;
     const image = await cloudinary.uploader.upload(`data:image/png;base64,${imageUrl}`, {folder: "dreamwake-ai"});
 
-    const newDream = await Dream.create({keywords, mainOutput, imageUrl: image.url, bulletsOutput});
+    const newDream = await Dream.create({keywords, mainOutput, imageUrl: image.url, bulletsOutput, userId, isPublic});
     console.log("Dream created successfully")
     res.status(200).json({newDream});
   } catch (error) {
