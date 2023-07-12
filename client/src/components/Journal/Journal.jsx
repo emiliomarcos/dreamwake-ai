@@ -29,12 +29,12 @@ export default function Journal() {
   return (
     <>
       {dreamsData ? userDreams.length ?
-        <>
+        <div className="journal">
           <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}/>
           <div className="journal-dreams-container">
             {userDreams}
           </div>
-        </>:
+        </div>:
         <h3>No dreams</h3> : <Loader />}
     </>
   )
