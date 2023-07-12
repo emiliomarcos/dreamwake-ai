@@ -1,3 +1,7 @@
+.journal {
+  margin-top: 7rem;
+}
+
 .journal-dreams-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -19,6 +23,10 @@
 .journal-dream-image {
   width: 100%;
   height: auto;
+}
+
+.searchbar {
+  margin-bottom: 5rem;
 }
 
 @media (max-width: 800px) {

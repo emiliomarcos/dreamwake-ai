@@ -54,8 +54,8 @@ export default function Lucid() {
           <li>Exploring personal issues and self-reflection</li>
         </ul>
       </div>
-      {loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button onClick={handleClick}>Ask AI</button>}
-  </>
+      {loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button className="ask-ai-button" onClick={handleClick}>Ask AI</button>}
+    </>
   )
 
   // return (

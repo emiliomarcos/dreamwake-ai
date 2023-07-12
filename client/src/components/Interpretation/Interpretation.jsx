@@ -48,10 +48,10 @@ export default function Interpretation() {
         <h4>{mainOutput}</h4>
       </div>
       <div className="image">
-        <img src={`data:image/png;base64,${imageUrl}`} />
+        <img className="interpretation-image" src={`data:image/png;base64,${imageUrl}`} />
       </div>
       {isPosted ? <button className="shared-button">Posted</button> :
-        shareFailed ? <button className="disabled-button">Post Failed</button> :
+        shareFailed ? <button className="failed-button">Post Failed</button> :
           isPosting ? <button className="posting-button">Posting...</button> :
             <div className="share-buttons-container">
               <button className="share-button" onClick={() => postDream(true)}>Share to Gallery</button>

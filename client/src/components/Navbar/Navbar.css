@@ -6,17 +6,15 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10;
   height: 4rem;
   background-color: #14082A;
   width: 100%;
-  margin: 0;
 }
 
 .navbar-title {
   color: #fffff2;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 }
 
 .navbar-link {
@@ -30,4 +28,32 @@ nav {
 
 .navbar-icon {
   color: #fffff2;
+}
+
+@media (max-width: 800px) {
+  .navbar-title {
+    font-size: 1.1rem;
+  }
+
+  .navbar-link {
+    font-size: 0.9rem;
+  }
+
+  .navbar-icon {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-title {
+    font-size: 0.7rem;
+  }
+
+  .navbar-link {
+    font-size: 0.7rem;
+  }
+
+  .navbar-icon {
+    font-size: 0.7rem;
+  }
 }

@@ -1,3 +1,10 @@
 .dream-form {
-  margin-bottom: 200px;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dream-input {
+  margin-bottom: 5rem;
 }

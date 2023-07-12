@@ -2,18 +2,22 @@
   margin-top: 1rem;
 }
 
+.interpretation-image {
+  width: 85%;
+}
+
 .share-buttons-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
+  margin-bottom: 2rem;
 }
 
 .share-button {
-  margin: 4rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   background-color: #adff2f;
-  padding: 0.5rem;
-  width: 5rem;
-  height: 3rem;
-  min-width: 200px;
+  min-width: fit-content;
 }
 
 .share-button:hover {
@@ -21,12 +25,9 @@
 }
 
 .shared-button {
-  margin: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   background-color: #436311;
-  padding: 0.5rem;
-  width: 5rem;
-  height: 3rem;
-  min-width: 200px;
   cursor: default;
 }
 
@@ -35,12 +36,9 @@
 }
 
 .posting-button {
-  margin: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
   background-color: #79B220;
-  padding: 0.5rem;
-  width: 5rem;
-  height: 3rem;
-  min-width: 200px;
   cursor: wait;
 }
 
@@ -49,12 +47,11 @@
 }
 
 .disabled-button {
-  margin: 4rem;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   background-color: #5b5b5b;
-  padding: 0.5rem;
-  width: 5rem;
-  height: 3rem;
-  min-width: 200px;
+  min-width: fit-content;
   cursor: default;
   display: flex;
   flex-direction: column;
@@ -62,6 +59,17 @@
 }
 
 .disabled-button:hover {
+  background-color: #5b5b5b;
+}
+
+.failed-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  background-color: #5b5b5b;
+  cursor: default;
+}
+
+.failed-button:hover {
   background-color: #5b5b5b;
 }
 

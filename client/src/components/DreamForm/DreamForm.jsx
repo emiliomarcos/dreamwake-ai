@@ -50,7 +50,6 @@ export default function DreamForm() {
       } else {
         console.error(responseDalle);
       }
-
     } catch (error) {
       console.error(error);
     } finally {
@@ -67,13 +66,8 @@ export default function DreamForm() {
   return (
     <>
       <form onSubmit={handleSubmit} className="dream-form">
-        <label>
-          Dream keywords:
-          <input type="text" onChange={handleKeywords} />
-        </label>
-        <button>
-          Dream On
-        </button>
+        <input className="dream-input" type="text" placeholder="Dream keywords" onChange={handleKeywords} />
+        <button>Dream On</button>
       </form>
       {loadingStatus ? <Loader /> : interpretationState.chatOutput && <Interpretation />}
     </>
