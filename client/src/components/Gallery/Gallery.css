@@ -21,6 +21,11 @@
   height: auto;
 }
 
+.searchbar {
+  margin-top: 2.5rem;
+  margin-bottom: 5rem;
+}
+
 @media (max-width: 800px) {
   .gallery-dreams-container {
     grid-template-columns: repeat(2, 1fr);
