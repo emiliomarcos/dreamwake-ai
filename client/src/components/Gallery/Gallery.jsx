@@ -24,7 +24,7 @@ export default function Gallery() {
     <>
       {dreamsData ? dreams.length ?
         <>
-          <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}></input>
+          <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}/>
           <div className="gallery-dreams-container">
             {dreams}
           </div>

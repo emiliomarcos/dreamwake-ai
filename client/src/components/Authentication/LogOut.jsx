@@ -20,6 +20,6 @@ export default function LogOut() {
     }
   }
   return (
-    <button onClick={logOutUser} className="logout-button">Log Out</button>
+    <button className="logout-button" onClick={logOutUser}>Log Out</button>
   )
 }

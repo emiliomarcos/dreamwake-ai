@@ -55,7 +55,7 @@ export default function Lucid() {
         </ul>
       </div>
       {loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button onClick={handleClick}>Ask AI</button>}
-  </>
+    </>
   )
 
   // return (

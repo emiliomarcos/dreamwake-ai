@@ -30,7 +30,7 @@ export default function Journal() {
     <>
       {dreamsData ? userDreams.length ?
         <>
-          <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}></input>
+          <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}/>
           <div className="journal-dreams-container">
             {userDreams}
           </div>

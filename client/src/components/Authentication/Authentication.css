@@ -1,5 +1,17 @@
-.login-form {
-  margin-bottom: 3em;
+.authentication-form {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem;
+  align-items: center;
+}
+
+.authentication-inputs {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.email-input {
+  margin-right: 1rem;
 }
 
 .login-button {
