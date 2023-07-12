@@ -11,7 +11,7 @@ export default function Journal() {
 
   if (!userId) {
     return (
-      <h3>Sign in needed to use journal</h3>
+      <h3>Sign in needed</h3>
     )
   }
 
@@ -28,12 +28,14 @@ export default function Journal() {
 
   return (
     <>
-      <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}></input>
       {dreamsData ? userDreams.length ?
-        <div className="journal-dreams-container">
-          {userDreams}
-        </div> :
-        <h3>No dreams in your journal</h3> : <Loader />}
+        <>
+          <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}></input>
+          <div className="journal-dreams-container">
+            {userDreams}
+          </div>
+        </>:
+        <h3>No dreams</h3> : <Loader />}
     </>
   )
 }

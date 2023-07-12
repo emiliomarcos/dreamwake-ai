@@ -22,10 +22,14 @@ export default function Gallery() {
 
   return (
     <>
-      <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}></input>
-      <div className="gallery-dreams-container">
-        {dreamsData ? dreams : <Loader />}
-      </div>
+      {dreamsData ? dreams.length ?
+        <>
+          <input className="searchbar" placeholder="Search keywords" onChange={(e) => setSearchQuery(e.target.value.toLowerCase())}></input>
+          <div className="gallery-dreams-container">
+            {dreams}
+          </div>
+        </>:
+        <h3>No dreams</h3> : <Loader />}
     </>
   )
 }
