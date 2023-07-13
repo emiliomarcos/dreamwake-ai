@@ -28,12 +28,12 @@ export default function Dream() {
 
   if (dream) {
     return (
-      <>
+      <div className="dream">
         <h2 className="dream-keywords">{dream.keywords}</h2>
         <img src={dream.imageUrl} className="dream-image"/>
         <ul>{bullets}</ul>
         <h4>{dream.mainOutput}</h4>
-      </>
+      </div>
     )
   } else {
     return (

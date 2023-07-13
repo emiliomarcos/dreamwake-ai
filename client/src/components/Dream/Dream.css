@@ -1,4 +1,15 @@
+.dream {
+  margin-top: 5rem;
+  margin-bottom: 2rem;
+}
+
 .dream-image {
-  width: 50%;
-  margin-bottom: 3rem;
+  width: 45%;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .dream-image {
+    width: 60%;
+  }
 }
