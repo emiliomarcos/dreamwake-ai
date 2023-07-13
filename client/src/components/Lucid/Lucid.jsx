@@ -57,8 +57,4 @@ export default function Lucid() {
       {loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button className="ask-ai-button" onClick={handleClick}>Ask AI</button>}
     </>
   )
-
-  // return (
-  //   loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button onClick={handleClick}>Ask AI</button>
-  // )
 }
