@@ -9,4 +9,5 @@ export { default as Journal } from './Journal/Journal'
 export { default as LogIn } from "./Authentication/LogIn"
 export { default as LogOut } from "./Authentication/LogOut"
 export { default as SignUp } from "./Authentication/SignUp"
+export { default as PasswordReset } from "./Authentication/PasswordReset"
 export { default as Authentication } from "./Authentication/Authentication"
