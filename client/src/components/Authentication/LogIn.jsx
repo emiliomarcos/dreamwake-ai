@@ -10,7 +10,7 @@ export default function LogIn() {
   async function logInUser(e) {
     e.preventDefault();
     try {
-      signInWithEmailAndPassword(auth, email, password)
+      await signInWithEmailAndPassword(auth, email, password)
     } catch (error) {
       console.error(error);
     }

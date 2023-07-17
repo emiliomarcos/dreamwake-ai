@@ -12,7 +12,7 @@ export default function Interpretation() {
   const mainOutput = bulletsOutput.pop();
 
   const [isPosting, setIsPosting] = useState(false);
-  const [shareFailed, setShareFailed] = useState(false);
+  const [postFailed, setPostFailed] = useState(false);
 
   async function postDream(isPublic) {
     if (!isPosted) {
@@ -27,10 +27,11 @@ export default function Interpretation() {
           body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsOutput, userId, isPublic })
         })
         if (response.ok) {
+          console.log(response)
           setInterpretationState(prevState => ({...prevState, isPosted: true}));
           setNeedsUpdate(true);
         } else {
-          setShareFailed(true);
+          setPostFailed(true);
         }
       } catch (error) {
         console.error(error);
@@ -50,13 +51,13 @@ export default function Interpretation() {
       <div className="image">
         <img className="interpretation-image" src={`data:image/png;base64,${imageUrl}`} />
       </div>
-      {isPosted ? <button className="shared-button">Posted</button> :
-        shareFailed ? <button className="failed-button">Post Failed</button> :
+      {isPosted ? <button className="posted-button">Posted</button> :
+        postFailed ? <button className="failed-button">Post Failed</button> :
           isPosting ? <button className="posting-button">Posting...</button> :
-            <div className="share-buttons-container">
-              <button className="share-button" onClick={() => postDream(true)}>Share to Gallery</button>
-              {userId ? <button className="share-button" onClick={() => postDream(false)}>Save to Journal</button> :
-                <button className="disabled-button">Save to Journal<span className="sign-in-needed">Sign in needed</span></button>}
+            <div className="post-buttons-container">
+              <button className="post-button" onClick={() => postDream(true)}>Post to Gallery</button>
+              {userId ? <button className="post-button" onClick={() => postDream(false)}>Post to Journal</button> :
+                <button className="disabled-button">Post to Journal<span className="sign-in-needed">Sign in needed</span></button>}
             </div>
       }
     </>

@@ -8,7 +8,7 @@ export default function LogOut() {
 
   async function logOutUser() {
     try {
-      signOut(auth);
+      await signOut(auth);
       setInterpretationState({
         keywords: "",
         chatOutput: null,

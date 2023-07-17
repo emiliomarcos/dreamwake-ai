@@ -8,6 +8,10 @@
   margin-bottom: 2rem;
 }
 
+.dream-full-interpretation {
+  margin-bottom: 2rem;
+}
+
 @media (max-width: 600px) {
   .dream-image {
     width: 60%;

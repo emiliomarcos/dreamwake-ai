@@ -15,9 +15,9 @@ export default function Authentication() {
         <LogOut /> :
         <>
           <LogIn />
-          {/* <Link to="/authentication/forgotpassword"><button>Forgot Password</button></Link> */}
+          <Link to="/authentication/forgotpassword"><button>Forgot Password</button></Link>
+          <SignUp />
           <GoogleSignIn />
-          {/* <SignUp /> */}
         </>}
     </>
   )

@@ -10,7 +10,7 @@ export default function SignUp() {
   async function signUpUser(e) {
     e.preventDefault();
     try {
-      createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
       console.error(error);
     }

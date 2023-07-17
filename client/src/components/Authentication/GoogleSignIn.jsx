@@ -7,7 +7,7 @@ export default function GoogleSignIn() {
 
   async function handleGoogleSignIn() {
     try {
-      signInWithPopup(auth, provider);
+      await signInWithPopup(auth, provider);
     } catch (error) {
       console.error(error)
     }
