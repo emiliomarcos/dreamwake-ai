@@ -3,9 +3,10 @@ import { Loader } from "../";
 import "./Lucid.css"
 
 export default function Lucid() {
-  const [lucidPrompt] = useState("Give me some basic tips for lucid dreaming without talking about techniques");
   const [loadingStatus, setLoadingStatus] = useState(false);
   const [lucidOutput, setLucidOutput] = useState(null);
+
+  const lucidPrompt = "Give me some basic tips for lucid dreaming without talking about techniques";
 
   const aiTips = lucidOutput && <div className="ai-tips"><h2>AI Tips</h2>{lucidOutput}</div>
 

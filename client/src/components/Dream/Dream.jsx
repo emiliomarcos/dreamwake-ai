@@ -26,6 +26,23 @@ export default function Dream() {
     }
   }, [dream])
 
+  async function updateDream() {
+    try {
+      const response = await fetch ("http://localhost:5000/dream", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ id: dreamId, isPublic: !dream.isPublic })
+      })
+      if (response.ok) {
+        console.log(response);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   if (dream) {
     return (
       <div className="dream">
@@ -34,8 +51,8 @@ export default function Dream() {
         <ul>{bullets}</ul>
         <h4 className="dream-full-interpretation">{dream.mainOutput}</h4>
         {userId && dream.userId == userId ?
-          dream.isPublic ? <button>Unshare from Gallery</button> :
-            <button>Share to Gallery</button> : null}
+          dream.isPublic ? <button onClick={updateDream}>Unshare from Gallery</button> :
+            <button onClick={updateDream}>Share to Gallery</button> : null}
       </div>
     )
   } else {

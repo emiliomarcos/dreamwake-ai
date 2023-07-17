@@ -6,13 +6,13 @@
   width: 85%;
 }
 
-.share-buttons-container {
+.post-buttons-container {
   display: flex;
   justify-content: space-around;
   margin-bottom: 2rem;
 }
 
-.share-button {
+.post-button {
   margin-top: 2rem;
   margin-left: 1rem;
   margin-right: 1rem;
@@ -20,18 +20,18 @@
   min-width: fit-content;
 }
 
-.share-button:hover {
+.post-button:hover {
   background-color: #79B220;
 }
 
-.shared-button {
+.posted-button {
   margin-top: 2rem;
   margin-bottom: 2rem;
   background-color: #436311;
   cursor: default;
 }
 
-.shared-button:hover {
+.posted-button:hover {
   background-color: #436311;
 }
 
