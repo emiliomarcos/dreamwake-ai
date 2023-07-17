@@ -5,7 +5,7 @@ import { Loader } from "../"
 import "./Dream.css"
 
 export default function Dream() {
-  const { dreamsData, userId } = useAppContext();
+  const { dreamsData, userId, updateDreamsData } = useAppContext();
   const { dreamId } = useParams();
 
   const [bullets, setBullets] = useState(null);
@@ -37,6 +37,7 @@ export default function Dream() {
       })
       if (response.ok) {
         console.log(response);
+        updateDreamsData(dreamId, !dream.isPublic);
       }
     } catch (error) {
       console.error(error);
