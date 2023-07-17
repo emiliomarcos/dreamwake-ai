@@ -1,6 +1,6 @@
 .dream {
   margin-top: 5rem;
-  margin-bottom: 2rem;
+
 }
 
 .dream-image {
@@ -10,6 +10,48 @@
 
 .dream-full-interpretation {
   margin-bottom: 2rem;
+}
+
+.update-buttons-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 2rem;
+}
+
+.update-post-button {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #adff2f;
+  min-width: fit-content;
+}
+
+.update-post-button:hover {
+  background-color: #436311;
+}
+
+.update-unpost-button {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #E59400;
+  min-width: fit-content;
+}
+
+.update-unpost-button:hover {
+  background-color: #895800;
+}
+
+.delete-button {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  background-color: #CC0000;
+  min-width: fit-content;
+}
+
+.delete-button:hover {
+  background-color: #990000;
 }
 
 @media (max-width: 600px) {

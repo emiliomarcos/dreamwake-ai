@@ -8,7 +8,7 @@ const router = Router();
 
 router.route("/").get(async (req, res) => res.send("A dream has started"));
 
-router.route("/").post(async (req, res) => {
+router.route("/").patch(async (req, res) => {
   const { id, isPublic } = req.body;
 
   try {

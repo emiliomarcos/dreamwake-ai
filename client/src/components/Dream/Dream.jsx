@@ -29,7 +29,7 @@ export default function Dream() {
   async function updateDream() {
     try {
       const response = await fetch ("http://localhost:5000/dream", {
-        method: 'POST',
+        method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
         },
@@ -46,15 +46,20 @@ export default function Dream() {
 
   if (dream) {
     return (
+      <>
       <div className="dream">
         <h2 className="dream-keywords">{dream.keywords}</h2>
         <img src={dream.imageUrl} className="dream-image"/>
         <ul>{bullets}</ul>
         <h4 className="dream-full-interpretation">{dream.mainOutput}</h4>
-        {userId && dream.userId == userId ?
-          dream.isPublic ? <button onClick={updateDream}>Unshare from Gallery</button> :
-            <button onClick={updateDream}>Share to Gallery</button> : null}
       </div>
+      {userId && dream.userId == userId ?
+        <div className="update-buttons-container">
+          <button className={dream.isPublic ? "update-unpost-button" : "update-post-button"} onClick={updateDream}>{dream.isPublic ? "Unshare from Gallery" : "Share to gallery"}</button>
+          <button className="delete-button">Delete Entirely</button>
+        </div> : null
+      }
+      </>
     )
   } else {
     return (
