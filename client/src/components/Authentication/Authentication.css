@@ -11,30 +11,62 @@
   margin-bottom: 1.5rem;
 }
 
+.secondary-container {
+  display: flex;
+  margin-bottom: 12rem;
+}
+
 .email-input {
   margin-right: 1rem;
 }
 
 .signin-button {
-  background-color: green;
+  background-color: #adff2f;
 }
 
 .signup-button {
-  background-color: green;
+  background-color: #adff2f;
 }
 
 .signout-button {
   background-color: #CC0000;
 }
 
+.google-button {
+  background-color: #646cff;
+}
+
+.password-button {
+  background-color: #adff2f;
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: #B57EDC;
+  font-size: 0.75rem;
+}
+
 .signin-button:hover {
-  background-color: #004C00;
+  background-color: #79B220;
 }
 
 .signup-button:hover {
-  background-color: #004C00;
+  background-color: #79B220;
 }
 
 .signout-button:hover {
   background-color: #990000;
+}
+
+.google-button:hover {
+  background-color: #5353cc;
+}
+
+.password-button:hover {
+  background-color: #79B220;
+}
+
+.secondary-button:hover {
+  background-color: transparent;
+  color: #9064B0;
 }

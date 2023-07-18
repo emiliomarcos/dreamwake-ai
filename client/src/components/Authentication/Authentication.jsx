@@ -14,10 +14,10 @@ export default function Authentication() {
         <SignOut /> :
         <>
           <SignIn />
-          <Link to="/authentication/forgotpassword"><button>Forgot Password</button></Link>
-          <br></br>
-          <Link to="/authentication/signup"><button>Sign Up</button></Link>
-          <br></br>
+          <div className="secondary-container">
+            <Link to="/authentication/signup"><button className="secondary-button">Sign Up</button></Link>
+            <Link to="/authentication/forgotpassword"><button className="secondary-button">Forgot Password</button></Link>
+          </div>
           <GoogleSignIn />
         </>}
     </>

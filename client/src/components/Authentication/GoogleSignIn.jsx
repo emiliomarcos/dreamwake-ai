@@ -14,6 +14,6 @@ export default function GoogleSignIn() {
   }
 
   return (
-    <button onClick={handleGoogleSignIn}>Google Sign In</button>
+    <button className="google-button" onClick={handleGoogleSignIn}>Google Sign In</button>
   )
 }

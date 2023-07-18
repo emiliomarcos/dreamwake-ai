@@ -1,5 +1,6 @@
 .interpretation {
   margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .interpretation-image {
@@ -50,7 +51,7 @@
   margin-top: 2rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
-  background-color: #5b5b5b;
+  background-color: #595959;
   min-width: fit-content;
   cursor: default;
   display: flex;
@@ -59,18 +60,18 @@
 }
 
 .disabled-button:hover {
-  background-color: #5b5b5b;
+  background-color: #595959;
 }
 
 .failed-button {
   margin-top: 2rem;
   margin-bottom: 2rem;
-  background-color: #5b5b5b;
+  background-color: #595959;
   cursor: default;
 }
 
 .failed-button:hover {
-  background-color: #5b5b5b;
+  background-color: #595959;
 }
 
 .sign-in-needed {
