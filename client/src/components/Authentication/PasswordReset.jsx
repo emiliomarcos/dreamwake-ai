@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAppContext from "../App/useAppContext";
 import GoogleSignIn from "./GoogleSignIn";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -7,6 +8,15 @@ import "./Authentication.css";
 
 export default function PasswordReset() {
   const [email, setEmail] = useState("");
+
+  const { userId } = useAppContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userId) {
+      navigate("/authentication");
+    }
+  }, [navigate, userId])
 
   async function handlePasswordReset(e) {
     e.preventDefault();

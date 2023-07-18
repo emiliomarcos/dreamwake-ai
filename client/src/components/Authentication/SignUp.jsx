@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import useAppContext from "../App/useAppContext";
 import GoogleSignIn from "./GoogleSignIn";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
@@ -8,6 +9,15 @@ import "./Authentication.css";
 export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { userId } = useAppContext();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (userId) {
+      navigate("/authentication");
+    }
+  }, [navigate, userId])
 
   async function handleSignUp(e) {
     e.preventDefault();
