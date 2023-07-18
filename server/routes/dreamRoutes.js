@@ -20,4 +20,16 @@ router.route("/").patch(async (req, res) => {
   }
 })
 
+router.route("/").delete(async (req, res) => {
+  const { id } = req.body;
+
+  try {
+    const deletedDream = await Dream.findByIdAndDelete(id);
+    res.status(200).json({ deletedDream });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to delete dream" });
+  }
+})
+
 export default router;

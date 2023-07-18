@@ -14,8 +14,8 @@
 
 .post-button {
   margin-top: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   background-color: #adff2f;
   min-width: fit-content;
 }
@@ -48,8 +48,8 @@
 
 .disabled-button {
   margin-top: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   background-color: #5b5b5b;
   min-width: fit-content;
   cursor: default;

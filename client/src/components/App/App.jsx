@@ -22,6 +22,10 @@ export default function App() {
     setDreamsData(prevDreamsData => prevDreamsData.map(dream => dream._id === id ? {...dream, isPublic} : dream));
   }
 
+  function updateDeletedDream(id) {
+    setDreamsData(prevDreamsData => prevDreamsData.filter(dream => dream._id !== id));
+  }
+
   useEffect(() => {
     async function getDreamsData() {
       try {
@@ -58,7 +62,7 @@ export default function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, interpretationState, setInterpretationState, updateDreamsData }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, interpretationState, setInterpretationState, updateDreamsData, updateDeletedDream }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">
