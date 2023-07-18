@@ -1,7 +1,6 @@
 import useAppContext from "../App/useAppContext"
-import LogIn from "./LogIn";
-import SignUp from "./SignUp";
-import LogOut from "./LogOut";
+import SignIn from "./SignIn";
+import SignOut from "./SignOut";
 import GoogleSignIn from "./GoogleSignIn";
 import { Link } from "react-router-dom";
 
@@ -12,11 +11,13 @@ export default function Authentication() {
   return (
     <>
       {userId ?
-        <LogOut /> :
+        <SignOut /> :
         <>
-          <LogIn />
+          <SignIn />
           <Link to="/authentication/forgotpassword"><button>Forgot Password</button></Link>
-          <SignUp />
+          <br></br>
+          <Link to="/authentication/signup"><button>Sign Up</button></Link>
+          <br></br>
           <GoogleSignIn />
         </>}
     </>

@@ -3,10 +3,10 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
 import "./Authentication.css";
 
-export default function LogOut() {
+export default function SignOut() {
   const { setInterpretationState } = useAppContext();
 
-  async function logOutUser() {
+  async function handleSignOut() {
     try {
       await signOut(auth);
       setInterpretationState({
@@ -20,6 +20,6 @@ export default function LogOut() {
     }
   }
   return (
-    <button className="logout-button" onClick={logOutUser}>Log Out</button>
+    <button className="signout-button" onClick={handleSignOut}>Sign Out</button>
   )
 }

@@ -15,7 +15,7 @@
   margin-right: 1rem;
 }
 
-.login-button {
+.signin-button {
   background-color: green;
 }
 
@@ -23,11 +23,11 @@
   background-color: green;
 }
 
-.logout-button {
+.signout-button {
   background-color: #CC0000;
 }
 
-.login-button:hover {
+.signin-button:hover {
   background-color: #004C00;
 }
 
@@ -35,6 +35,6 @@
   background-color: #004C00;
 }
 
-.logout-button:hover {
+.signout-button:hover {
   background-color: #990000;
 }
