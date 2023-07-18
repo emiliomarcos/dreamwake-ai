@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import { gptRoutes, dalleRoutes, dreamRoutes, lucidRoutes } from "./routes/index.js";
+import { gptRoutes, dalleRoutes, dreamsRoutes, dreamRoutes, lucidRoutes } from "./routes/index.js";
 import { connect } from "mongoose";
 import * as dotenv from "dotenv";
 
@@ -17,7 +17,8 @@ app.use(cors({
 
 app.use("/gpt", gptRoutes);
 app.use("/dalle", dalleRoutes);
-app.use("/gallery", dreamRoutes);
+app.use("/dreams", dreamsRoutes);
+app.use("/dream", dreamRoutes);
 app.use("/luciddream", lucidRoutes);
 
 app.get("/", async (req, res) => {

@@ -1,8 +1,13 @@
 .lucid-info {
   margin-top: 6rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 
 .ask-ai-button {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ai-tips {
   margin-bottom: 2rem;
 }

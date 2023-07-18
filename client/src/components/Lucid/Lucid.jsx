@@ -3,9 +3,12 @@ import { Loader } from "../";
 import "./Lucid.css"
 
 export default function Lucid() {
-  const [lucidPrompt, setLucidPrompt] = useState("Give me some basic tips for lucid dreaming including the most popular techniques");
   const [loadingStatus, setLoadingStatus] = useState(false);
   const [lucidOutput, setLucidOutput] = useState(null);
+
+  const lucidPrompt = "Give me some basic tips for lucid dreaming without talking about techniques";
+
+  const aiTips = lucidOutput && <div className="ai-tips"><h2>AI Tips</h2>{lucidOutput}</div>
 
   async function handleClick(e) {
     e.preventDefault();
@@ -20,7 +23,6 @@ export default function Lucid() {
         },
         body: JSON.stringify({ lucidPrompt })
       });
-      setLucidPrompt("Give me some basic tips for lucid dreaming including the most popular techniques");
       if (responseLucid.ok) {
         const responseLucidJSON = await responseLucid.json();
         setLucidOutput(responseLucidJSON.choices[0].text);
@@ -40,9 +42,11 @@ export default function Lucid() {
 
         <h2>Techniques to Induce Lucid Dreaming</h2>
         <ul>
-          <li><strong>Mnemonic Induction of Lucid Dreams (MILD)</strong>: This technique involves waking up after a period of sleep and then developing the intention to remember that you are dreaming before returning to sleep.</li>
-          <li><strong>Wake Back to Bed (WBTB)</strong>: WBTB involves waking up for a few minutes after a period of sleep and then going back to sleep, aiming to enter a REM sleep period where dreams are more likely to occur.</li>
-          <li><strong>Wake Induced Lucid Dreams (WILD)</strong>: This technique is based on transitioning from the awake state directly into the dream state while maintaining consciousness.</li>
+          <li><strong>Mnemonic Induction of Lucid Dreams (MILD)</strong>: This technique involves thinking about having a lucid dream, recalling dreams, and visualizing becoming lucid before sleeping.</li>
+          <li><strong>Wake Induced Lucid Dreams (WILD)</strong>: This technique involves consciously falling asleep, transitioning from being awake to your body sleeping before your brain, to the dream state.</li>
+          <li><strong>Wake Back to Bed (WBTB)</strong>: This technique involves waking up for a few minutes or even a few hours and then going back to sleep, to more easily enter REM state directly and catch yourself dreaming.</li>
+          <li><strong>Finger Induced Lucid Dreams (FILD)</strong>: This technique involves sleeping after waking up for a very short time and fall back asleep while gently moving your fingers and using them on some thought action.</li>
+          <li><strong>Reality Checks</strong>: This technique goes well with the rest, and it simply involves performing personal reality checks during the day to aim for you to do them during your dreams.</li>
         </ul>
 
         <h2>Benefits of Lucid Dreaming</h2>
@@ -54,11 +58,7 @@ export default function Lucid() {
           <li>Exploring personal issues and self-reflection</li>
         </ul>
       </div>
-      {loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button className="ask-ai-button" onClick={handleClick}>Ask AI</button>}
+      {loadingStatus ? <Loader /> : lucidOutput ? aiTips : <button className="ask-ai-button" onClick={handleClick}>AI Tips</button>}
     </>
   )
-
-  // return (
-  //   loadingStatus ? <Loader /> : lucidOutput ? lucidOutput : <button onClick={handleClick}>Ask AI</button>
-  // )
 }

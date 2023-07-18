@@ -6,32 +6,32 @@
   width: 85%;
 }
 
-.share-buttons-container {
+.post-buttons-container {
   display: flex;
   justify-content: space-around;
   margin-bottom: 2rem;
 }
 
-.share-button {
+.post-button {
   margin-top: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   background-color: #adff2f;
   min-width: fit-content;
 }
 
-.share-button:hover {
+.post-button:hover {
   background-color: #79B220;
 }
 
-.shared-button {
+.posted-button {
   margin-top: 2rem;
   margin-bottom: 2rem;
   background-color: #436311;
   cursor: default;
 }
 
-.shared-button:hover {
+.posted-button:hover {
   background-color: #436311;
 }
 
@@ -48,8 +48,8 @@
 
 .disabled-button {
   margin-top: 2rem;
-  margin-left: 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   background-color: #5b5b5b;
   min-width: fit-content;
   cursor: default;

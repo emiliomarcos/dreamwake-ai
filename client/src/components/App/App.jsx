@@ -1,6 +1,6 @@
 import { useState, useEffect, createContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { DreamForm, Gallery, Dream, Navbar, Lucid, Authentication, Journal } from '../';
+import { DreamForm, Gallery, Dream, Navbar, Lucid, Authentication, PasswordReset, Journal } from '../';
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase";
 import './App.css'
@@ -18,11 +18,19 @@ export default function App() {
     isPosted: false
   })
 
+  function updateDreamsData(id, isPublic) {
+    setDreamsData(prevDreamsData => prevDreamsData.map(dream => dream._id === id ? {...dream, isPublic} : dream));
+  }
+
+  function updateDeletedDream(id) {
+    setDreamsData(prevDreamsData => prevDreamsData.filter(dream => dream._id !== id));
+  }
+
   useEffect(() => {
     async function getDreamsData() {
       try {
-        const responseDB = await fetch("https://dreamwake-ai.onrender.com/gallery", {
-        // const responseDB = await fetch("http://localhost:5000/gallery", {
+        const responseDB = await fetch("https://dreamwake-ai.onrender.com/dreams", {
+        // const responseDB = await fetch("http://localhost:5000/dreams", {
           method: "GET",
           headers: {
             "Content-Type": "application/json"
@@ -54,7 +62,7 @@ export default function App() {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, interpretationState, setInterpretationState }}>
+    <AppContext.Provider value={{ dreamsData, needsUpdate, setNeedsUpdate, userId, interpretationState, setInterpretationState, updateDreamsData, updateDeletedDream }}>
       <BrowserRouter>
         <Navbar />
         <div className="content">
@@ -66,6 +74,7 @@ export default function App() {
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:dreamId" element={<Dream />} />
             <Route path="/authentication" element={<Authentication />} />
+            <Route path="/authentication/forgotpassword" element={<PasswordReset />} />
           </Routes>
         </div>
       </BrowserRouter>
