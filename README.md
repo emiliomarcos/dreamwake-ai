@@ -1,6 +1,9 @@
 ## [dreamwake.ai](https://dreamwake.ai)
 
-**DreamWake AI** is a web app about dreams built using React, MongoDB, NodeJS, Express, and OpenAI. The main purpose of this project is to learn more about these technologies and become a better developer in general. I have always been intrigued by the world of dreams, so building an interesting project around it is a great pursuit, as well as experimenting more with AI.
+**DreamWake AI** is a web app about dreams built using React, MongoDB, NodeJS, Express, and OpenAI. The main purpose of this project is to learn more about these technologies and become a better developer in general. I have always been intrigued by the world of dreams, so building an interesting project around it is a great pursuit, as well as experimenting more with AI models, prompting and tweaking them.
+
+**CS50 Video Demo**: https://www.youtube.com/watch?v=kb94xk1Td1M
+
 
 <img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"  alt="React Logo"  width="130"  height="100">
 <img src="https://img.icons8.com/color/452/mongodb.png" alt="MongoDB Logo" width="130" height="110">
