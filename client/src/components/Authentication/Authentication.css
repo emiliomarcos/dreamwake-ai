@@ -36,13 +36,18 @@
   background-color: #646cff;
 }
 
-.password-button {
+.password-send-button {
   background-color: #adff2f;
+}
+
+.password-sent-button {
+  background-color: #436311;
+  cursor: default;
 }
 
 .secondary-button {
   background-color: transparent;
-  color: #B57EDC;
+  color: white;
   font-size: 0.75rem;
 }
 
@@ -62,11 +67,21 @@
   background-color: #5353cc;
 }
 
-.password-button:hover {
+.password-send-button:hover {
   background-color: #79B220;
+}
+
+.password-sent-button:hover {
+  background-color: #436311;
+  cursor: default;
 }
 
 .secondary-button:hover {
   background-color: transparent;
-  color: #9064B0;
+  color: white;
+}
+
+.invalid {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
 }

@@ -8,6 +8,8 @@ import "./Authentication.css";
 
 export default function PasswordReset() {
   const [email, setEmail] = useState("");
+  const [emailSent, setEmailSent] = useState(false);
+  const [emailFailed, setEmailFailed] = useState(false);
 
   const { userId } = useAppContext();
   const navigate = useNavigate();
@@ -22,8 +24,11 @@ export default function PasswordReset() {
     e.preventDefault();
     try {
       await sendPasswordResetEmail(auth, email);
+      setEmailFailed(false);
+      setEmailSent(true);
     } catch (error) {
       console.error(error);
+      setEmailFailed(true);
     }
   }
 
@@ -33,7 +38,10 @@ export default function PasswordReset() {
         <div className="authentication-inputs">
           <input placeholder="email" onChange={(e) => setEmail(e.target.value)}/>
         </div>
-        <button className="password-button">Reset Password</button>
+        {emailSent ? <button className="password-sent-button">Email Sent</button> :
+          <button className="password-send-button">Reset Password</button>
+        }
+        {emailFailed ? <span className="invalid">Invalid User</span> : null}
       </form>
       <div className="secondary-container">
         <Link to="/authentication"><button className="secondary-button">Sign In</button></Link>
