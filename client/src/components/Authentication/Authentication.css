@@ -11,30 +11,83 @@
   margin-bottom: 1.5rem;
 }
 
+.secondary-container {
+  display: flex;
+  margin-bottom: 12rem;
+}
+
 .email-input {
   margin-right: 1rem;
 }
 
-.login-button {
-  background-color: green;
+.signin-button {
+  background-color: #adff2f;
 }
 
 .signup-button {
-  background-color: green;
+  background-color: #adff2f;
 }
 
-.logout-button {
+.signout-button {
   background-color: #CC0000;
 }
 
-.login-button:hover {
-  background-color: #004C00;
+.google-button {
+  background-color: #646cff;
+}
+
+.password-send-button {
+  background-color: #adff2f;
+}
+
+.password-sent-button {
+  background-color: #436311;
+  cursor: default;
+}
+
+.secondary-button {
+  background-color: transparent;
+  color: white;
+  font-size: 0.75rem;
+}
+
+.signin-button:hover {
+  background-color: #79B220;
 }
 
 .signup-button:hover {
-  background-color: #004C00;
+  background-color: #79B220;
 }
 
-.logout-button:hover {
+.signout-button:hover {
   background-color: #990000;
+}
+
+.google-button:hover {
+  background-color: #5353cc;
+}
+
+.password-send-button:hover {
+  background-color: #79B220;
+}
+
+.password-sent-button:hover {
+  background-color: #436311;
+  cursor: default;
+}
+
+.secondary-button:hover {
+  background-color: transparent;
+  color: white;
+}
+
+.invalid {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+}
+
+@media (max-width: 600px) {
+  .secondary-button {
+    font-size: 0.6rem;
+  }
 }

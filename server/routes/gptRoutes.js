@@ -15,8 +15,14 @@ router.route("/").post(async (req, res) => {
   const { chatPrompt } = req.body;
 
   try {
-    const data = await openAI.createCompletion({model: "text-davinci-003", max_tokens: 1000, prompt: chatPrompt});
-    const interpretation = data.data
+    const data = await openAI.createChatCompletion({
+      model: "gpt-3.5-turbo",
+      messages: [{"role": "system", "content": "You are a futuristic dream interpretation tool that only provides positive outlooks."}, {"role": "user", "content": chatPrompt}],
+      temperature: 0.85,
+      max_tokens: 700
+    });
+    console.log(data.data);
+    const interpretation = data.data;
     res.status(200).json(interpretation);
   } catch (error) {
     console.error(error);
