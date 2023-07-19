@@ -39,7 +39,7 @@ export default function DreamForm() {
 
       if (responseGpt.ok) {
         const responseGptJSON = await responseGpt.json();
-        setInterpretationState(prevState => ({...prevState, chatOutput: responseGptJSON.choices[0].text}));
+        setInterpretationState(prevState => ({...prevState, chatOutput: responseGptJSON.choices[0].message.content}));
       } else {
         console.error(responseGpt);
       }
@@ -59,7 +59,11 @@ export default function DreamForm() {
 
   function handleKeywords(e) {
     setCurrentKeywords(e.target.value);
-    setChatPrompt(`give me a dream interpretation of each of the following keywords and only include positive meanings of what these words could possibly represent in my dream, at the end include a short • full dream interpretation, give me this separated in • : ${currentKeywords}`);
+    setChatPrompt(`Interpret each of the following dream keywords shortly and succintly, providing possible representations of each in the context of a dream. I'd like your responses to be separated by bullet points (•). Finally, give me a brief full dream interpretation, considering all these elements together. The keywords are: ${currentKeywords}. Your response should look like this:
+    • Keyword 1: Interpretation
+    • Keyword 2: Interpretation
+    • Keyword 3: Interpretation
+    • Full Dream Interpretation: Summary of all elements`)
     setImagePrompt(`lucid dreaming scene with these keywords: ${currentKeywords}`);
   }
 
