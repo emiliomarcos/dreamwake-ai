@@ -17,7 +17,6 @@ export default function DreamForm() {
 
     try {
       setLoadingStatus(true);
-      console.log(chatPrompt)
       const promiseGpt = fetch("https://dreamwake-ai.onrender.com/gpt", {
       // const promiseGpt = fetch("http://localhost:5000/gpt", {
         method: "POST",
