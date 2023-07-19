@@ -6,14 +6,14 @@ import "./DreamForm.css"
 export default function DreamForm() {
   const { interpretationState, setInterpretationState } = useAppContext();
 
-  const [currentKeywords, setCurrentKeywords] = useState("");
+  const [keywords, setKeywords] = useState("");
   const [chatPrompt, setChatPrompt] = useState("");
   const [imagePrompt, setImagePrompt] = useState("");
   const [loadingStatus, setLoadingStatus] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    setInterpretationState(prevState => ({...prevState, keywords: currentKeywords, isPosted: false}));
+    setInterpretationState(prevState => ({...prevState, keywords, isPosted: false}));
 
     try {
       setLoadingStatus(true);
@@ -58,13 +58,13 @@ export default function DreamForm() {
   }
 
   function handleKeywords(e) {
-    setCurrentKeywords(e.target.value);
-    setChatPrompt(`Interpret each of the following dream keywords shortly and succintly, providing possible representations of each in the context of a dream. I'd like your responses to be separated by bullet points (•). Finally, give me a brief full dream interpretation, considering all these elements together. The keywords are: ${currentKeywords}. Your response should look like this:
+    setKeywords(e.target.value);
+    setChatPrompt(`Interpret each of the following dream keywords shortly and succintly, providing possible representations of each in the context of a dream. I'd like your responses to be separated by bullet points (•). Finally, give me a brief full dream interpretation, considering all these elements together. The keywords are: ${e.target.value}. Your response should look like this:
     • Keyword 1: Interpretation
     • Keyword 2: Interpretation
     • Keyword 3: Interpretation
     • Full Dream Interpretation: Summary of all elements`)
-    setImagePrompt(`lucid dreaming scene with these keywords: ${currentKeywords}`);
+    setImagePrompt(`lucid dreaming scene with these keywords: ${e.target.value}`);
   }
 
   return (

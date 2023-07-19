@@ -27,7 +27,6 @@ export default function Interpretation() {
           body: JSON.stringify({ keywords, mainOutput, imageUrl, bulletsOutput, userId, isPublic })
         })
         if (response.ok) {
-          console.log(response)
           setInterpretationState(prevState => ({...prevState, isPosted: true}));
           setNeedsUpdate(true);
         } else {
