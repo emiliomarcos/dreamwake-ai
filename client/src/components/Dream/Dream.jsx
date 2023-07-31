@@ -34,6 +34,7 @@ export default function Dream() {
 
   async function updateDream() {
     try {
+      // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dream", {
       const response = await fetch ("http://localhost:5000/dream", {
         method: 'PATCH',
         headers: {
@@ -52,6 +53,7 @@ export default function Dream() {
 
   async function deleteDream() {
     try {
+      // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dream", {
       const response = await fetch ("http://localhost:5000/dream", {
         method: 'DELETE',
         headers: {
