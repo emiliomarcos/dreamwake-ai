@@ -34,8 +34,8 @@ export default function Dream() {
 
   async function updateDream() {
     try {
-      // const responseDB = await fetch("https://dreamwake-ai.onrender.com/dream", {
-      const response = await fetch ("http://localhost:5000/dream", {
+      const response = await fetch("https://dreamwake-ai-server.onrender.com/dream", {
+      // const response = await fetch ("http://localhost:5000/dream", {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
