@@ -20,17 +20,18 @@
 AI dream analysis.
 Dream gallery.
 Dream journal.
+Lucid dreaming.
 
-Work in progress lucid dreaming info/tools.
+Backlog lucid dreaming info/tools.
 Backlog sleep tracking dashboard.
 
 
 ## *Future Development* 🚧
-**DreamWake AI** is continuously being improved, with design fixes/improvements, more features and enhancements coming soon.
+**DreamWake AI** is soon to be improved, with design/visual improvements, more features and enhancements coming soon.
 
 
 ## *Getting Started* 🚀
-To get started with this project, simply clone the repository, install the necessary dependencies using `npm install` for both client and server, add your env variables as in example file, start the server folder using `npm start` and start the client folder using `npm run dev` (currently linked to server on render.com).The application should now be running at `http://localhost:5173`, powered by Vite.
+To get started with this project, simply clone the repository, install the necessary dependencies using `npm install` for both client and server, add your env variables as in example file, start the server folder using `npm start` and start the client folder using `npm run dev` (currently linked to server on render.com). The application should now be running at `http://localhost:5173`, powered by Vite.
 Visit the Live site at [dreamwake.ai](https://dreamwake.ai)
 
 
