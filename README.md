@@ -5,7 +5,7 @@
 **CS50 Video Demo**: https://www.youtube.com/watch?v=kb94xk1Td1M
 
 
-<img  src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"  alt="React Logo"  width="130"  height="100">
+<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1200px-React-icon.svg.png"  alt="React Logo"  width="130"  height="100">
 <img src="https://img.icons8.com/color/452/mongodb.png" alt="MongoDB Logo" width="130" height="110">
 <img src="https://upload.wikimedia.org/wikipedia/commons/d/d9/Node.js_logo.svg" alt="Nodejs Logo" width="140" height="100">
 <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/Expressjs.png" alt="Express Logo" width="140" height="50">
@@ -27,7 +27,7 @@ Backlog sleep tracking dashboard.
 
 
 ## *Future Development* 🚧
-**DreamWake AI** is soon to be improved, with design/visual improvements, more features and enhancements coming soon.
+**DreamWake AI** is to be improved by the end of 2023, with design/visual improvements, more features and enhancements.
 
 
 ## *Getting Started* 🚀
